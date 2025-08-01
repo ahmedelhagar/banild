@@ -1,17 +1,21 @@
 @import "tailwindcss";
-@import "@fontsource/cairo/300.css";
-@import "@fontsource/cairo/400.css";
-@import "@fontsource/cairo/600.css";
-@import "@fontsource/cairo/700.css";
+
+/* Configure multilingual font families for Tailwind v4 */
+@theme {
+  --font-family-poppins: Poppins, sans-serif;
+  --font-family-cairo: Cairo, sans-serif;
+  --font-family-arabic: Cairo, sans-serif; /* Alias for existing components */
+  --font-family-sans: Poppins, sans-serif; /* Default to Poppins for English */
+}
 
 :root {
   --background: #ffffff;
-  --foreground: #000000;
+  --foreground: #171717;
 }
 
-/* Arabic font classes */
+/* Arabic font classes - maintaining backward compatibility */
 .font-arabic {
-  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family: Cairo, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 /* RTL Support */

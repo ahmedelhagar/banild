@@ -24,7 +24,7 @@ export default function PricingPlans({
   subtitle,
   className = "py-20"
 }: PricingPlansProps) {
-  const { t, isRTL } = useLanguage();
+  const { t, tArray, isRTL } = useLanguage();
   const [isAnnual, setIsAnnual] = useState(true);
   const [currency, setCurrency] = useState('USD'); // USD or EGP
   
@@ -270,7 +270,7 @@ export default function PricingPlans({
                       {isRTL ? 'ما يشمله:' : "What's included:"}
                     </h4>
                     <ul className="space-y-2 sm:space-y-3">
-                      {(t(plan.featuresKey) as string[]).map((feature, featureIndex) => (
+                      {tArray(plan.featuresKey).map((feature, featureIndex) => (
                         <li key={featureIndex} className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : 'text-left'}`}>
                           <svg className={`w-4 h-4 sm:w-5 sm:h-5 text-green-500 mt-0.5 flex-shrink-0 ${isRTL ? 'ml-2 sm:ml-3' : 'mr-2 sm:mr-3'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

@@ -19,7 +19,7 @@ export default function PromptArea({
   const [isTyping, setIsTyping] = useState(true);
   const [fullText, setFullText] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const { t, isRTL } = useLanguage();
+  const { t, tArray, isRTL } = useLanguage();
 
   // Convert English numbers to Arabic numerals
   const toArabicNumerals = (num: number | string) => {
@@ -31,15 +31,13 @@ export default function PromptArea({
 
   // Select random heading on component mount and language change
   useEffect(() => {
-    const headings = t('home.headings');
-    if (Array.isArray(headings)) {
-      const randomIndex = Math.floor(Math.random() * headings.length);
-      setFullText(headings[randomIndex]);
-      // Reset typewriter state when language changes
-      setTypedText('');
-      setIsTyping(true);
-    }
-  }, [t, isRTL]); // Added isRTL dependency to trigger on language change
+    const headings = tArray('home.headings');
+    const randomIndex = Math.floor(Math.random() * headings.length);
+    setFullText(headings[randomIndex]);
+    // Reset typewriter state when language changes
+    setTypedText('');
+    setIsTyping(true);
+  }, [tArray, isRTL]); // Added isRTL dependency to trigger on language change
 
   // Typewriter effect
   useEffect(() => {
@@ -85,7 +83,7 @@ export default function PromptArea({
     textareaRef.current?.focus();
   };
 
-  const quickPrompts = t('home.quickPrompts') || [];
+  const quickPrompts = tArray('home.quickPrompts');
 
   return (
     <div className={`w-full bg-white border-t border-gray-100 min-h-screen flex items-center justify-center ${isRTL ? 'rtl' : 'ltr'}`}>

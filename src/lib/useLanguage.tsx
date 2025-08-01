@@ -2,14 +2,18 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import translations from './translations.json';
+import { getFontForLanguage } from './utils';
 
 type Language = 'en' | 'ar';
+type TranslationsType = typeof translations;
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => any;
+  t: (key: string) => string;
+  tArray: (key: string) => string[];
   isRTL: boolean;
+  getFontClass: () => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -32,24 +36,59 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     // Update document direction and language
     document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    
+    // Update document font class
+    const fontClass = getFontForLanguage(language);
+    document.documentElement.className = fontClass;
   }, [language]);
 
-  // Translation function
-  const t = (key: string) => {
+  // Helper function to get translation value
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getTranslationValue = (key: string): any => {
     const keys = key.split('.');
-    let value = translations[language];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let value: any = (translations as TranslationsType)[language];
     
     for (const k of keys) {
       value = value?.[k];
     }
     
-    return value || key;
+    return value;
+  };
+
+  // Translation function for strings - returns string for JSX compatibility
+  const t = (key: string): string => {
+    const value = getTranslationValue(key);
+    
+    if (typeof value === 'string') {
+      return value;
+    } else if (Array.isArray(value)) {
+      return value[0] || key; // Return first item of array as fallback
+    }
+    
+    return key; // Fallback to the key if translation not found
+  };
+
+  // Translation function for arrays - returns array
+  const tArray = (key: string): string[] => {
+    const value = getTranslationValue(key);
+    
+    if (Array.isArray(value)) {
+      return value;
+    } else if (typeof value === 'string') {
+      return [value]; // Wrap string in array
+    }
+    
+    return [key]; // Fallback
   };
 
   const isRTL = language === 'ar';
+  
+  // Get appropriate font class for current language
+  const getFontClass = () => getFontForLanguage(language);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, tArray, isRTL, getFontClass }}>
       {children}
     </LanguageContext.Provider>
   );
