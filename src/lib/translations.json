@@ -1,0 +1,642 @@
+{
+    "en": {
+      "header": {
+        "intro": "Intro",
+        "community": "Community", 
+        "templates": "Templates",
+        "pricing": "Pricing",
+        "blog": "Blog",
+        "getStarted": "Get Started",
+        "signIn": "Sign in",
+        "signUp": "Sign up"
+      },
+      "home": {
+        "headings": [
+          "What's do you want to build?",
+          "Ready to create something amazing?",
+          "Let's build your next big idea!",
+          "What website can I help you create?",
+          "Time to bring your vision to life!",
+          "What digital experience should we craft?",
+          "Ready to turn ideas into reality?",
+          "What's your next web project?",
+          "Let's create something incredible together!",
+          "What app idea is on your mind?",
+          "Ready to build the future?",
+          "What's your dream website like?"
+        ],
+        "subtitle": "Create stunning apps & websites by chatting with AI.",
+        "placeholder": "Create a e-commerce platform...",
+        "poweredBy": "powered by banild ai",
+        "characterCount": "/2000",
+        "quickPromptsTitle": "Or try one of these",
+        "quickPrompts": [
+          "Generate a landing page",
+          "Create a full-stack web app", 
+          "Build a responsive portfolio site",
+          "Generate an e-commerce homepage"
+        ]
+      },
+      "intro": {
+        "hero": {
+          "title": "Leave it to Banild",
+          "subtitle": "Transform your ideas into stunning websites using artificial intelligence. No coding required, just chat with our AI and watch your vision come to life.",
+          "startButton": "Try Banild",
+          "watchButton": "Download our plugin on WordPress"
+        },
+        "about": {
+          "title": "Who We Are",
+          "description": "We are Banild AI, a cutting-edge platform that revolutionizes website creation through artificial intelligence. Our mission is to make web development accessible to everyone, regardless of technical expertise.",
+          "mission": "We believe that every great idea deserves a beautiful website. That's why we've created an AI that understands your vision and transforms it into reality with just a conversation.",
+          "stats": {
+            "websites": "Websites Built",
+            "clients": "Happy Clients"
+          },
+          "placeholder": "Your AI Assistant"
+        },
+        "services": {
+          "title": "Our Services",
+          "subtitle": "Everything you need to build, launch, and grow your online presence",
+          "aiGeneration": {
+            "title": "AI Website Generation",
+            "desc": "Chat with our AI to create custom websites, landing pages, and web applications tailored to your specific needs and industry."
+          },
+          "wordpress": {
+            "title": "WordPress Integration",
+            "desc": "Seamlessly integrate with WordPress through our official plugin. Deploy and manage your AI-generated websites directly from your dashboard."
+          },
+          "support": {
+            "title": "24/7 Support",
+            "desc": "Get round-the-clock support from our team of experts. We're here to help you succeed at every step of your journey."
+          }
+        },
+        "pricing": {
+          "title": "Simple Pricing",
+          "subtitle": "Choose the perfect plan for your needs. All plans include our core AI features.",
+          "popular": "Most Popular",
+          "getStarted": "Get Started",
+          "free": {
+            "name": "Free",
+            "price": "$0",
+            "desc": "Perfect for trying out our AI",
+            "features": [
+              "3 AI-generated websites",
+              "Basic templates",
+              "Community support",
+              "WordPress plugin access"
+            ]
+          },
+          "pro": {
+            "name": "Pro",
+            "price": "$29/mo",
+            "desc": "Best for professionals",
+            "features": [
+              "Unlimited AI websites",
+              "Premium templates",
+              "Priority support",
+              "Custom domains",
+              "Advanced AI features",
+              "Analytics dashboard"
+            ]
+          },
+          "enterprise": {
+            "name": "Enterprise",
+            "price": "$99/mo",
+            "desc": "For growing businesses",
+            "features": [
+              "Everything in Pro",
+              "White-label solution",
+              "API access",
+              "Custom integrations",
+              "Dedicated support",
+              "Team collaboration"
+            ]
+          }
+        },
+        "videos": {
+          "title": "See Banild AI in Action",
+          "subtitle": "Watch how easy it is to create stunning websites with our AI-powered platform",
+          "seeMore": "See More Videos",
+          "demo": {
+            "title": "Platform Demo",
+            "desc": "See how our AI transforms ideas into beautiful websites in minutes"
+          },
+          "tutorial": {
+            "title": "Getting Started Tutorial",
+            "desc": "Learn how to use Banild AI to build your first website"
+          },
+          "gettingStarted": {
+            "title": "Getting Started Guide",
+            "desc": "Complete beginner's guide to using Banild AI effectively"
+          },
+          "advanced": {
+            "title": "Advanced Features",
+            "desc": "Explore advanced AI features and customization options"
+          },
+          "wordpress": {
+            "title": "WordPress Integration",
+            "desc": "How to integrate and use Banild AI with WordPress"
+          },
+          "templates": {
+            "title": "Templates Guide",
+            "desc": "Master our template system and create stunning designs"
+          },
+          "customization": {
+            "title": "Customization Tips",
+            "desc": "Pro tips for customizing your AI-generated websites"
+          },
+          "deployment": {
+            "title": "Deployment Guide",
+            "desc": "Step-by-step guide to deploy your website online"
+          },
+          "tips": {
+            "title": "Tips and Tricks",
+            "desc": "Expert tips to get the most out of Banild AI"
+          }
+        },
+        "cta": {
+          "title": "Ready to Build Something Amazing?",
+          "subtitle": "Join thousands of users who are already creating stunning websites with Banild AI. Start your journey today and bring your ideas to life.",
+          "button": "Start Building for Free"
+        }
+      },
+      "pricing": {
+        "title": "Choose Your Plan",
+        "subtitle": "Start building with AI today. Upgrade or downgrade at any time.",
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "q1": {
+            "question": "Can I upgrade or downgrade my plan at any time?",
+            "answer": "Yes, you can change your plan at any time. Changes take effect immediately and we'll prorate your billing accordingly."
+          },
+          "q2": {
+            "question": "What's the difference between Individual and Teams plans?",
+            "answer": "Teams plans include everything in Individual plus team collaboration tools, admin dashboard, user management, and team analytics."
+          },
+          "q3": {
+            "question": "Do you offer refunds?",
+            "answer": "We offer a 30-day money-back guarantee on all paid plans. No questions asked."
+          },
+          "q4": {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept all major credit cards, PayPal, and bank transfers for annual plans."
+          }
+        },
+        "cta": {
+          "title": "Still have questions?",
+          "description": "Our team is here to help you choose the right plan for your needs.",
+          "button": "Contact Sales"
+        }
+      },
+      "auth": {
+        "backToHome": "Back to Home",
+        "back": "Back",
+        "email": "Email Address",
+        "password": "Password",
+        "fullName": "Full Name",
+        "emailPlaceholder": "Enter your email",
+        "passwordPlaceholder": "Create a password",
+        "fullNamePlaceholder": "Enter your full name",
+        "continueWithGoogle": "Continue with Google",
+        "continueWithFacebook": "Continue with Facebook",
+        "continueWithGitHub": "Continue with GitHub",
+        "continueWithEmail": "Continue with Email",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password",
+        "createAccount": "Create Account",
+        "signup": {
+          "title": "Join Banild AI",
+          "subtitle": "Create your account and start building with AI",
+          "button": "Create Account",
+          "hasAccount": "Already have an account?",
+          "signInLink": "Login"
+        },
+        "login": {
+          "title": "Welcome Back",
+          "subtitle": "Login to continue building with AI",
+          "passwordPlaceholder": "Enter your password",
+          "button": "Login",
+          "noAccount": "Don't have an account?"
+        },
+        "resetPassword": {
+          "title": "Reset Your Password",
+          "subtitle": "Enter your email address and we'll send you a link to reset your password",
+          "button": "Send Reset Link",
+          "sending": "Sending Reset Link...",
+          "backToLogin": "Back to Login",
+          "rememberPassword": "Remember your password?",
+          "securityNote": "For security, the reset link will expire in 1 hour. If you don't receive an email, check your spam folder.",
+          "success": {
+            "title": "Check Your Email",
+            "subtitle": "We've sent password reset instructions to",
+            "nextSteps": "Next Steps",
+            "step1": "Check your email inbox",
+            "step2": "Click the reset link in the email",
+            "step3": "Create your new password",
+            "step4": "Sign in with your new password",
+            "tryDifferent": "Try Different Email",
+            "contactSupport": "contact support",
+            "helpText": "Didn't receive the email? Check your spam folder or"
+          }
+        }
+      },
+      "blog": {
+        "title": "Our Blog",
+        "subtitle": "Insights, tutorials, and stories from the world of AI and development",
+        "featured": "Featured Posts",
+        "recent": "Recent Posts",
+        "readMore": "Read More",
+        "newsletter": {
+          "title": "Stay Updated",
+          "subtitle": "Get the latest articles and insights delivered straight to your inbox",
+          "placeholder": "Enter your email",
+          "subscribe": "Subscribe"
+        },
+        "backToBlog": "Back to Blog",
+        "relatedPosts": "Related Posts",
+        "author": {
+          "bio": "Content creator and technology enthusiast sharing insights about AI and development."
+        }
+      },
+      "templates": {
+        "title": "AI-Powered Templates",
+        "subtitle": "Jumpstart your projects with our collection of professionally crafted, AI-enhanced templates",
+        "getPro": "Get Pro Access",
+        "category": "Category",
+        "difficulty": "Difficulty",
+        "featured": "Featured Templates",
+        "allTemplates": "All Templates",
+        "templates": "Templates",
+        "preview": "Preview",
+        "useTemplate": "Use Template",
+        "use": "Use",
+        "cta": {
+          "title": "Need a Custom Template?",
+          "subtitle": "Can't find what you're looking for? We can create custom AI-powered templates tailored to your specific needs.",
+          "upgrade": "Upgrade to Pro",
+          "request": "Request Custom Template"
+        }
+      },
+      "footer": {
+        "company": {
+          "description": "Transform your ideas into stunning websites using artificial intelligence. No coding required, just chat with our AI and watch your vision come to life.",
+          "location": "Cairo, Egypt"
+        },
+        "navigation": {
+          "title": "Company",
+          "about": "About Us",
+          "templates": "Templates",
+          "pricing": "Pricing",
+          "blog": "Blog",
+          "community": "Community"
+        },
+        "product": {
+          "title": "Product",
+          "aiBuilder": "AI Website Builder",
+          "wordpress": "WordPress Plugin",
+          "templates": "Templates",
+          "api": "API Access"
+        },
+        "support": {
+          "title": "Support",
+          "help": "Help Center",
+          "contact": "Contact Us",
+          "tutorials": "Tutorials",
+          "status": "Status"
+        },
+        "legal": {
+          "title": "Legal",
+          "privacy": "Privacy Policy",
+          "terms": "Terms of Service",
+          "cookies": "Cookie Policy",
+          "gdpr": "GDPR"
+        },
+        "social": {
+          "title": "Follow Us"
+        },
+        "copyright": "Banild AI. All rights reserved.",
+        "madeWith": "Made with",
+        "madeIn": "in Egypt"
+      }
+    },
+    "ar": {
+      "header": {
+        "intro": "مقدمة",
+        "community": "المجتمع",
+        "templates": "القوالب", 
+        "pricing": "الأسعار",
+        "blog": "المدونة",
+        "getStarted": "ابدأ الآن",
+        "signIn": "تسجيل دخول",
+        "signUp": "إنشاء حساب"
+      },
+      "home": {
+        "headings": [
+          "إيه اللي عايز تبنيه؟",
+          "جاهز تعمل حاجة رهيبة؟",
+          "يلا نبني فكرتك الجاية!",
+          "إيه الموقع اللي عايز أساعدك تعمله؟",
+          "وقت إنك تحقق رؤيتك!",
+          "إيه التجربة الرقمية اللي هنصممها؟",
+          "جاهز تحول الأفكار لحقيقة؟",
+          "إيه مشروعك الجاي على النت؟",
+          "يلا نعمل حاجة خرافية مع بعض!",
+          "إيه فكرة التطبيق اللي في دماغك؟",
+          "جاهز نبني المستقبل؟",
+          "إيه شكل موقع أحلامك؟"
+        ],
+        "subtitle": "اعمل مواقع وتطبيقات جامدة من خلال المحادثة مع الذكاء الاصطناعي.",
+        "placeholder": "اعمل منصة تجارة إلكترونية...",
+        "poweredBy": "مدعوم من بانيلد",
+        "characterCount": "/٢٠٠٠",
+        "quickPromptsTitle": "أو جرب واحدة من دي",
+        "quickPrompts": [
+          "اعمل صفحة هبوط",
+          "اعمل تطبيق ويب متكامل",
+          "ابني موقع بورتفوليو متجاوب", 
+          "اعمل صفحة رئيسية للتجارة الإلكترونية"
+        ]
+      },
+      "intro": {
+        "hero": {
+          "title": "سيبها على بانيلد",
+          "subtitle": "حول أفكارك لمواقع رهيبة باستخدام الذكاء الاصطناعي. مش محتاج برمجة، بس اتكلم مع الذكاء الاصطناعي بتاعنا وشوف رؤيتك تتحقق.",
+          "startButton": "جرب بانيلد",
+          "watchButton": "حمل الإضافة بتاعتنا على ووردبريس"
+        },
+        "about": {
+          "title": "احنا مين",
+          "description": "احنا بانيلد، منصة متطورة بتثور عالم إنشاء المواقع من خلال الذكاء الاصطناعي. مهمتنا إننا نخلي تطوير المواقع متاح لكل الناس، مهما كان مستوى خبرتهم التقنية.",
+          "mission": "احنا مؤمنين إن كل فكرة عظيمة تستاهل موقع جميل. عشان كده عملنا ذكاء اصطناعي يفهم رؤيتك ويحولها لحقيقة بمجرد محادثة.",
+          "stats": {
+            "websites": "موقع تم بناؤه",
+            "clients": "عميل سعيد"
+          },
+          "placeholder": "مساعدك الذكي"
+        },
+        "services": {
+          "title": "خدماتنا",
+          "subtitle": "كل اللي محتاجه عشان تبني وتطلق وتنمي وجودك على الإنترنت",
+          "aiGeneration": {
+            "title": "توليد المواقع بالذكاء الاصطناعي",
+            "desc": "اتكلم مع الذكاء الاصطناعي بتاعنا عشان تعمل مواقع مخصصة وصفحات هبوط وتطبيقات ويب مناسبة لاحتياجاتك ومجالك."
+          },
+          "wordpress": {
+            "title": "تكامل مع ووردبريس",
+            "desc": "اتكامل بسلاسة مع ووردبريس من خلال الإضافة الرسمية بتاعتنا. انشر وادير المواقع اللي الذكاء الاصطناعي عملها من لوحة التحكم مباشرة."
+          },
+          "support": {
+            "title": "دعم ٢٤/٧",
+            "desc": "احصل على دعم على مدار الساعة من فريق الخبراء بتاعنا. احنا هنا عشان نساعدك تنجح في كل خطوة من رحلتك."
+          }
+        },
+        "pricing": {
+          "title": "أسعار بسيطة",
+          "subtitle": "اختار الخطة المثالية لاحتياجاتك. كل الخطط تشمل ميزات الذكاء الاصطناعي الأساسية.",
+          "popular": "الأكثر شعبية",
+          "getStarted": "ابدأ دلوقتي",
+          "free": {
+            "name": "مجاني",
+            "price": "٠ جنيه",
+            "desc": "مثالي لتجربة الذكاء الاصطناعي بتاعنا",
+            "features": [
+              "٣ مواقع بالذكاء الاصطناعي",
+              "قوالب أساسية",
+              "دعم المجتمع",
+              "الوصول لإضافة ووردبريس"
+            ]
+          },
+          "pro": {
+            "name": "برو",
+            "price": "٤٥٠ جنيه/شهر",
+            "desc": "الأفضل للمحترفين",
+            "features": [
+              "مواقع لا محدودة بالذكاء الاصطناعي",
+              "قوالب مميزة",
+              "دعم ذو أولوية",
+              "نطاقات مخصصة",
+              "ميزات ذكاء اصطناعي متقدمة",
+              "لوحة تحليلات"
+            ]
+          },
+          "enterprise": {
+            "name": "مؤسسي",
+            "price": "١٥٠٠ جنيه/شهر",
+            "desc": "للشركات النامية",
+            "features": [
+              "كل حاجة في البرو",
+              "حل بعلامة تجارية بيضاء",
+              "وصول لواجهة برمجة التطبيقات",
+              "تكاملات مخصصة",
+              "دعم مخصص",
+              "تعاون الفريق"
+            ]
+          }
+        },
+        "videos": {
+          "title": "شوف بانيلد في العمل",
+          "subtitle": "اتفرج على قد إيه سهل إنك تعمل مواقع مذهلة بمنصة الذكاء الاصطناعي بتاعتنا",
+          "seeMore": "شوف المزيد من الفيديوهات",
+          "demo": {
+            "title": "ديمو المنصة",
+            "desc": "شوف إزاي الذكاء الاصطناعي بتاعنا بيحول الأفكار لمواقع جميلة في دقايق"
+          },
+          "tutorial": {
+            "title": "تيوتوريال البداية",
+            "desc": "اتعلم إزاي تستخدم بانيلد عشان تبني أول موقع ليك"
+          },
+          "gettingStarted": {
+            "title": "دليل البداية",
+            "desc": "دليل كامل للمبتدئين لاستخدام بانيلد بكفاءة"
+          },
+          "advanced": {
+            "title": "الميزات المتقدمة",
+            "desc": "استكشف الميزات الذكاء الاصطناعي المتقدمة وخيارات التخصيص"
+          },
+          "wordpress": {
+            "title": "تكامل مع ووردبريس",
+            "desc": "كيفية دمج واستخدام بانيلد مع ووردبريس"
+          },
+          "templates": {
+            "title": "دليل القوالب",
+            "desc": "اتمرين نظام القوالب الخاص بنا وإنشاء تصاميم رائعة"
+          },
+          "customization": {
+            "title": "نصائح للتخصيص",
+            "desc": "نصائح متقدمة لتخصيص مواقع الذكاء الاصطناعي التي تم إنشاؤها"
+          },
+          "deployment": {
+            "title": "دليل التطوير",
+            "desc": "دليل خطوة بخطوة لنشر موقعك على الإنترنت"
+          },
+          "tips": {
+            "title": "نصائح وحيل",
+            "desc": "نصائح خبراء للحصول على أفضل ما يمكن من بانيلد"
+          }
+        },
+        "cta": {
+          "title": "جاهز تبني حاجة مذهلة؟",
+          "subtitle": "انضم لآلاف المستخدمين اللي بيعملوا مواقع رهيبة باستخدام بانيلد. ابدأ رحلتك النهاردة وحقق أفكارك.",
+          "button": "ابدأ البناء مجاناً"
+        }
+      },
+      "pricing": {
+        "title": "اختر الخطة المناسبة لك",
+        "subtitle": "ابدأ البناء بالذكاء الاصطناعي اليوم. ارقي أو انزل الخطة في أي وقت.",
+        "faq": {
+          "title": "الأسئلة الشائعة",
+          "q1": {
+            "question": "هل يمكنني الترقية أو التنزيل في أي وقت؟",
+            "answer": "نعم، يمكنك تغيير خطتك في أي وقت. التغييرات تسري فوراً وسنحسب الفرق في الفاتورة."
+          },
+          "q2": {
+            "question": "ما الفرق بين الخطة الفردية وخطة الفرق؟",
+            "answer": "خطة الفرق تشمل كل شيء في الخطة الفردية بالإضافة لأدوات التعاون ولوحة الإدارة وإدارة المستخدمين وتحليلات الفريق."
+          },
+          "q3": {
+            "question": "هل تقدمون استرداد الأموال؟",
+            "answer": "نقدم ضمان استرداد المال لمدة ٣٠ يوماً على جميع الخطط المدفوعة. بدون أسئلة."
+          },
+          "q4": {
+            "question": "ما طرق الدفع التي تقبلونها؟",
+            "answer": "نقبل جميع بطاقات الائتمان الرئيسية وPayPal والتحويلات البنكية للخطط السنوية."
+          }
+        },
+        "cta": {
+          "title": "لا تزال لديك أسئلة؟",
+          "description": "فريقنا هنا لمساعدتك في اختيار الخطة المناسبة لاحتياجاتك.",
+          "button": "تواصل مع المبيعات"
+        }
+      },
+      "auth": {
+        "backToHome": "العودة للرئيسية",
+        "back": "رجوع",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "fullName": "الاسم الكامل",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "passwordPlaceholder": "أنشئ كلمة مرور",
+        "fullNamePlaceholder": "أدخل اسمك الكامل",
+        "continueWithGoogle": "متابعة مع جوجل",
+        "continueWithFacebook": "متابعة مع فيسبوك",
+        "continueWithGitHub": "متابعة مع جيت هاب",
+        "continueWithEmail": "متابعة مع البريد الإلكتروني",
+        "rememberMe": "تذكرني",
+        "forgotPassword": "نسيت كلمة المرور",
+        "createAccount": "إنشاء حساب",
+        "signup": {
+          "title": "انضم لبانيلد",
+          "subtitle": "أنشئ حسابك وابدأ البناء بالذكاء الاصطناعي",
+          "button": "إنشاء حساب",
+          "hasAccount": "لديك حساب بالفعل؟",
+          "signInLink": "تسجيل دخول"
+        },
+        "login": {
+          "title": "أهلاً بعودتك",
+          "subtitle": "سجل دخولك لمتابعة البناء بالذكاء الاصطناعي",
+          "passwordPlaceholder": "أدخل كلمة المرور",
+          "button": "تسجيل دخول",
+          "noAccount": "ليس لديك حساب؟"
+        },
+        "resetPassword": {
+          "title": "إعادة تعيين كلمة المرور",
+          "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط لإعادة تعيين كلمة المرور",
+          "button": "إرسال رابط الإعادة",
+          "sending": "جاري إرسال رابط الإعادة...",
+          "backToLogin": "العودة لتسجيل الدخول",
+          "rememberPassword": "تذكرت كلمة المرور؟",
+          "securityNote": "للأمان، سينتهي صلاحية رابط الإعادة خلال ساعة واحدة. إذا لم تستلم الإيميل، تحقق من مجلد الرسائل المزعجة.",
+          "success": {
+            "title": "تحقق من بريدك الإلكتروني",
+            "subtitle": "أرسلنا تعليمات إعادة تعيين كلمة المرور إلى",
+            "nextSteps": "الخطوات التالية",
+            "step1": "تحقق من صندوق البريد الوارد",
+            "step2": "اضغط على رابط الإعادة في الإيميل",
+            "step3": "أنشئ كلمة المرور الجديدة",
+            "step4": "سجل دخولك بكلمة المرور الجديدة",
+            "tryDifferent": "جرب بريد مختلف",
+            "contactSupport": "تواصل مع الدعم",
+            "helpText": "لم تستلم الإيميل؟ تحقق من مجلد الرسائل المزعجة أو"
+          }
+        }
+      },
+      "blog": {
+        "title": "مدونتنا",
+        "subtitle": "رؤى ودروس وقصص من عالم الذكاء الاصطناعي والتطوير",
+        "featured": "المقالات المميزة",
+        "recent": "المقالات الحديثة",
+        "readMore": "اقرأ المزيد",
+        "newsletter": {
+          "title": "ابق محدثاً",
+          "subtitle": "احصل على أحدث المقالات والرؤى مباشرة في صندوق بريدك",
+          "placeholder": "أدخل بريدك الإلكتروني",
+          "subscribe": "اشترك"
+        },
+        "backToBlog": "العودة للمدونة",
+        "relatedPosts": "مقالات ذات صلة",
+        "author": {
+          "bio": "منشئ محتوى ومتحمس للتكنولوجيا يشارك رؤى حول الذكاء الاصطناعي والتطوير."
+        }
+      },
+      "templates": {
+        "title": "قوالب مدعومة بالذكاء الاصطناعي",
+        "subtitle": "ابدأ مشاريعك بمجموعة من القوالب المصممة بشكل احترافي والمحسنة بالذكاء الاصطناعي",
+        "getPro": "احصل على النسخة المدفوعة",
+        "category": "الفئة",
+        "difficulty": "الصعوبة",
+        "featured": "القوالب المميزة",
+        "allTemplates": "جميع القوالب",
+        "templates": "القوالب",
+        "preview": "معاينة",
+        "useTemplate": "استخدم القالب",
+        "use": "استخدم",
+        "cta": {
+          "title": "تحتاج قالب مخصص؟",
+          "subtitle": "لا تجد ما تبحث عنه؟ يمكننا إنشاء قوالب مخصصة مدعومة بالذكاء الاصطناعي تناسب احتياجاتك المحددة.",
+          "upgrade": "ارقي للنسخة المدفوعة",
+          "request": "اطلب قالب مخصص"
+        }
+      },
+      "footer": {
+        "company": {
+          "description": "حول أفكارك لمواقع رهيبة باستخدام الذكاء الاصطناعي. مش محتاج برمجة، بس اتكلم مع الذكاء الاصطناعي بتاعنا وشوف رؤيتك تتحقق.",
+          "location": "القاهرة، مصر"
+        },
+        "navigation": {
+          "title": "الشركة",
+          "about": "من نحن",
+          "templates": "القوالب",
+          "pricing": "الأسعار",
+          "blog": "المدونة",
+          "community": "المجتمع"
+        },
+        "product": {
+          "title": "المنتجات",
+          "aiBuilder": "منشئ المواقع بالذكاء الاصطناعي",
+          "wordpress": "إضافة ووردبريس",
+          "templates": "القوالب",
+          "api": "واجهة برمجة التطبيقات"
+        },
+        "support": {
+          "title": "الدعم",
+          "help": "مركز المساعدة",
+          "contact": "تواصل معنا",
+          "tutorials": "الدروس التعليمية",
+          "status": "حالة الخدمة"
+        },
+        "legal": {
+          "title": "قانوني",
+          "privacy": "سياسة الخصوصية",
+          "terms": "شروط الخدمة",
+          "cookies": "سياسة ملفات تعريف الارتباط",
+          "gdpr": "حماية البيانات الأوروبية"
+        },
+        "social": {
+          "title": "تابعنا"
+        },
+        "copyright": "بانيلد. جميع الحقوق محفوظة.",
+        "madeWith": "صنع بـ",
+        "madeIn": "في مصر"
+      }
+    }
+  } 

@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
+/* Configure multilingual font families for Tailwind v4 */
+@theme {
+  --font-family-poppins: Poppins, sans-serif;
+  --font-family-cairo: Cairo, sans-serif;
+  --font-family-arabic: Cairo, sans-serif; /* Alias for existing components */
+  --font-family-sans: Poppins, sans-serif; /* Default to Poppins for English */
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Arabic font classes - maintaining backward compatibility */
+.font-arabic {
+  font-family: Cairo, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
