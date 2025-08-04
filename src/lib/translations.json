@@ -37,6 +37,18 @@
           "Generate an e-commerce homepage"
         ]
       },
+      "nav": {
+        "brandName": "Banild AI",
+        "createProject": "Create New Project",
+        "dashboard": "Dashboard",
+        "recentProjects": "Recent Projects",
+        "settings": "Settings",
+        "status": {
+          "completed": "Completed",
+          "inProgress": "In Progress", 
+          "draft": "Draft"
+        }
+      },
       "intro": {
         "hero": {
           "title": "Leave it to Banild",
@@ -356,6 +368,18 @@
           "ابني موقع بورتفوليو متجاوب", 
           "اعمل صفحة رئيسية للتجارة الإلكترونية"
         ]
+      },
+      "nav": {
+        "brandName": "بانيلد الذكاء الاصطناعي",
+        "createProject": "إنشاء مشروع جديد",
+        "dashboard": "لوحة التحكم",
+        "recentProjects": "المشاريع الأخيرة",
+        "settings": "الإعدادات",
+        "status": {
+          "completed": "مكتمل",
+          "inProgress": "قيد التطوير",
+          "draft": "مسودة"
+        }
       },
       "intro": {
         "hero": {

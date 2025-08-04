@@ -15,6 +15,7 @@ import "@fontsource/cairo/700.css"; // Bold
 
 import "./globals.css";
 import { LanguageProvider } from "@/lib/useLanguage";
+import { DarkModeProvider } from "@/lib/useDarkMode";
 
 export const metadata: Metadata = {
   title: "Banild AI - Multilingual Application",
@@ -29,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <DarkModeProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </DarkModeProvider>
       </body>
     </html>
   );

@@ -1,0 +1,232 @@
+# Cursor Rules for Banild AI UI
+
+## Project Overview
+- **Framework**: Next.js 15.4.5 with App Router and TypeScript
+- **Styling**: Tailwind CSS v4 with custom theme configuration
+- **Languages**: Multilingual support (English/Arabic) with RTL
+- **Fonts**: Poppins (English), Cairo (Arabic) via @fontsource
+- **State Management**: React hooks and context
+- **Utilities**: clsx + tailwind-merge for dynamic classes
+
+## Code Style & Conventions
+
+### TypeScript
+- Always use TypeScript with strict type checking
+- Prefer interfaces over types for object shapes
+- Use proper typing for props, avoid `any` unless absolutely necessary
+- Use `eslint-disable-next-line @typescript-eslint/no-explicit-any` when `any` is unavoidable
+
+### React Components
+- Use functional components with hooks
+- Always use `'use client'` directive for client components
+- Prefer named exports over default exports for utilities
+- Use default exports for page components and main components
+
+### File Organization
+```
+src/
+├── app/                 # Next.js app router pages
+├── components/          # Reusable UI components
+├── lib/                # Utilities, hooks, and configurations
+└── ui/                 # Basic UI components (buttons, inputs, etc.)
+```
+
+### Component Structure
+```tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useLanguage } from '@/lib/useLanguage';
+import { cn } from '@/lib/utils';
+
+interface ComponentProps {
+  className?: string;
+  children?: React.ReactNode;
+  // ... other props
+}
+
+export default function Component({ 
+  className,
+  children,
+  ...props 
+}: ComponentProps) {
+  const { t, tArray, isRTL, getFontClass } = useLanguage();
+  
+  return (
+    <div className={cn(
+      "base-classes",
+      getFontClass(),
+      {
+        "conditional-class": condition,
+        "rtl-class": isRTL
+      },
+      className
+    )}>
+      {children}
+    </div>
+  );
+}
+```
+
+## Tailwind CSS Guidelines
+
+### Class Naming Patterns
+- Use responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`
+- Group related classes: spacing, colors, typography, layout
+- Use the `cn()` utility for conditional classes
+
+### Font Usage
+- `font-poppins` for English content
+- `font-cairo` or `font-arabic` for Arabic content
+- Use `getFontClass()` for automatic font selection
+- Default sans font is Poppins
+
+### RTL Support
+- Use conditional classes based on `isRTL`
+- Flip margins/padding: `${isRTL ? 'ml-4' : 'mr-4'}`
+- Reverse flex direction: `${isRTL ? 'flex-row-reverse' : ''}`
+
+## Internationalization (i18n)
+
+### Translation Functions
+- `t(key)` - returns string for simple translations
+- `tArray(key)` - returns string[] for array translations
+- Always destructure from `useLanguage()` hook
+
+### Usage Examples
+```tsx
+const { t, tArray, isRTL } = useLanguage();
+
+// Simple text
+<h1>{t('home.title')}</h1>
+
+// Array of items
+{tArray('home.quickPrompts').map((prompt, index) => (
+  <button key={index}>{prompt}</button>
+))}
+
+// Conditional styling
+<div className={`${isRTL ? 'font-arabic text-right' : 'text-left'}`}>
+```
+
+### Translation Keys
+- Use dot notation: `section.subsection.key`
+- Keep keys descriptive and hierarchical
+- Prefer specific keys over generic ones
+
+## Component Patterns
+
+### Language-Aware Styling
+```tsx
+<element className={cn(
+  "base-classes",
+  getFontClass(), // Automatic font selection
+  {
+    "font-arabic": isRTL,
+    "text-right": isRTL,
+    "text-left": !isRTL
+  }
+)} />
+```
+
+### Responsive Design
+```tsx
+<div className={cn(
+  "px-4 py-2",           // Mobile
+  "sm:px-6 sm:py-3",     // Small screens
+  "md:px-8 md:py-4",     // Medium screens
+  "lg:px-12 lg:py-6"     // Large screens
+)} />
+```
+
+### Dynamic Classes with cn()
+```tsx
+import { cn } from '@/lib/utils';
+
+<button className={cn(
+  "base-button-styles",
+  {
+    "bg-blue-500": variant === 'primary',
+    "bg-gray-500": variant === 'secondary',
+    "opacity-50": disabled
+  },
+  className // Allow override
+)} />
+```
+
+## Best Practices
+
+### Performance
+- Use `React.memo()` for expensive components
+- Prefer CSS classes over inline styles
+- Use Next.js Image component for images
+- Implement proper loading states
+
+### Accessibility
+- Always include proper ARIA labels
+- Use semantic HTML elements
+- Ensure proper contrast ratios
+- Support keyboard navigation
+
+### Error Handling
+- Use proper TypeScript error types
+- Implement error boundaries for critical components
+- Provide fallback UI for failed states
+
+### SEO & Metadata
+- Use Next.js metadata API for page-specific SEO
+- Include proper Open Graph tags
+- Implement structured data where applicable
+
+## File Naming Conventions
+- Components: `PascalCase.tsx`
+- Pages: `page.tsx` (App Router convention)
+- Utilities: `camelCase.ts`
+- Types: `types.ts` or `ComponentName.types.ts`
+
+## Import Organization
+```tsx
+// 1. React and Next.js imports
+import { useState } from 'react';
+import Image from 'next/image';
+
+// 2. Third-party libraries
+import { clsx } from 'clsx';
+
+// 3. Internal utilities and hooks
+import { useLanguage } from '@/lib/useLanguage';
+import { cn } from '@/lib/utils';
+
+// 4. Internal components
+import Button from '@/components/Button';
+
+// 5. Types and interfaces
+import type { ComponentProps } from './types';
+```
+
+## Common Anti-Patterns to Avoid
+- Don't use `any` type without proper eslint-disable comment
+- Don't mix `t()` and `tArray()` - use appropriate function for data type
+- Don't hardcode text strings - always use translation keys
+- Don't use inline styles when Tailwind classes are available
+- Don't forget to handle RTL layout in components
+- Don't skip TypeScript prop interfaces
+- Don't use `console.log` in production code
+
+## Testing Guidelines
+- Write unit tests for utility functions
+- Test components with different language settings
+- Test RTL layout rendering
+- Mock translation functions in tests
+
+## Build & Deployment
+- Always run `npm run build` before committing
+- Fix TypeScript errors, not just warnings
+- Ensure all translations exist for both languages
+- Test responsive design on different screen sizes
+
+## Environment Setup
+- Use Next.js 15+ with App Router
+- Configure Tailwind CSS v4 with custom theme
+- Set up ESLint with TypeScript rules
+- Use Prettier for code formatting

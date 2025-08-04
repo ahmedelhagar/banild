@@ -1,11 +1,11 @@
-import LandingHeader from "@/components/LandingHeader";
-import PromptArea from "@/components/PromptArea";
+import LandingHeader from "@/components/Landing/LandingHeader";
+import LandingPromptArea from "@/components/LandingPromptArea";
 
 export default function Home() {
   return (
     <div>
       <LandingHeader />
-      <PromptArea />
+      <LandingPromptArea />
     </div>
   );
 }

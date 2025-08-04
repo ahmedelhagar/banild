@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/useLanguage';
-import LandHeader from '@/components/LandingHeader';
+import LandHeader from '@/components/Landing/LandingHeader';
 
 interface BlogPost {
   id: string;

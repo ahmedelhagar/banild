@@ -1,7 +1,7 @@
 'use client';
 
-import LandHeader from '@/components/LandingHeader';
-import PricingPlans from '@/components/PricingPlans';
+import LandHeader from '@/components/Landing/LandingHeader';
+import PricingPlans from '@/components/Landing/PricingPlans';
 import { useLanguage } from '@/lib/useLanguage';
 import Link from 'next/link';
 
