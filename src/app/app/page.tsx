@@ -15,8 +15,9 @@ export default function AppPage() {
       />
       
       {/* Main Content */}
-      <DashboardContent />
-      
+      <div className="flex-1 overflow-auto">
+        <DashboardContent />
+      </div>
     </div>
   );
 }

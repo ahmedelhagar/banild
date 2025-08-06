@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import Nav from '@/components/Nav';
+import { useState, useEffect } from 'react';
+import SideNavigation from '@/components/SideNavigation';
 import { useDarkMode } from '@/lib/useDarkMode';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -14,6 +14,33 @@ export default function AppLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navCollapsed, setNavCollapsed] = useState(false);
   const { isDarkMode } = useDarkMode();
+
+  // Load nav state from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedNavState = localStorage.getItem('navCollapsed');
+      if (savedNavState !== null) {
+        setNavCollapsed(JSON.parse(savedNavState));
+      }
+    } catch (error) {
+      console.warn('Failed to load nav state from localStorage:', error);
+    }
+  }, []);
+
+  // Save nav state to localStorage when it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('navCollapsed', JSON.stringify(navCollapsed));
+    } catch (error) {
+      console.warn('Failed to save nav state to localStorage:', error);
+    }
+  }, [navCollapsed]);
+
+  const handleNavToggle = () => {
+    const newState = !navCollapsed;
+    setNavCollapsed(newState);
+    // localStorage is automatically updated by the useEffect above
+  };
 
   return (
     <div className={cn(
@@ -33,10 +60,10 @@ export default function AppLayout({
         fixed inset-y-0 left-0 z-30 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
-        <Nav 
+        <SideNavigation 
           className="lg:relative" 
           isCollapsed={navCollapsed}
-          onToggleCollapse={() => setNavCollapsed(!navCollapsed)}
+          onToggleCollapse={handleNavToggle}
         />
       </div>
 

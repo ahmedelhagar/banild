@@ -14,13 +14,27 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
 
   // Load dark mode preference from localStorage on mount
   useEffect(() => {
-    const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode !== null) {
-      const darkMode = JSON.parse(savedDarkMode);
-      setIsDarkMode(darkMode);
-      updateDocumentClass(darkMode);
-    } else {
-      // Check system preference
+    try {
+      const savedDarkMode = localStorage.getItem('darkMode');
+      if (savedDarkMode !== null) {
+        const darkMode = JSON.parse(savedDarkMode);
+        setIsDarkMode(darkMode);
+        updateDocumentClass(darkMode);
+      } else {
+        // Check system preference
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setIsDarkMode(systemPrefersDark);
+        updateDocumentClass(systemPrefersDark);
+        // Save the system preference
+        try {
+          localStorage.setItem('darkMode', JSON.stringify(systemPrefersDark));
+        } catch (saveError) {
+          console.warn('Failed to save system preference to localStorage:', saveError);
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to load dark mode from localStorage:', error);
+      // Fallback to system preference
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setIsDarkMode(systemPrefersDark);
       updateDocumentClass(systemPrefersDark);
@@ -40,8 +54,14 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
     updateDocumentClass(newDarkMode);
+    
+    // Save to localStorage with error handling
+    try {
+      localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+    } catch (error) {
+      console.warn('Failed to save dark mode to localStorage:', error);
+    }
   };
 
   return (
