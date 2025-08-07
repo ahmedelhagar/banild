@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Logo } from "../ui/logo";
+import { Logo } from "../../ui/logo";
 import { useLanguage } from "@/lib/useLanguage";
 import { Globe } from "lucide-react";
 

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/lib/useLanguage';
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 // Custom X (Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (

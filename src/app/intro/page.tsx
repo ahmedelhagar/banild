@@ -3,9 +3,9 @@
 import { useLanguage } from '@/lib/useLanguage';
 import Link from 'next/link';
 import { Users, Zap, Shield, ArrowRight, Download } from 'lucide-react';
-import LandHeader from '@/components/LandingHeader';
-import PricingPlans from '@/components/PricingPlans';
-import Footer from '@/components/Footer';
+import LandHeader from '@/components/Landing/LandingHeader';
+import PricingPlans from '@/components/Landing/PricingPlans';
+import Footer from '@/components/Landing/Footer';
 
 export default function IntroPage() {
   const { t, isRTL } = useLanguage();
