@@ -1,11 +1,16 @@
 'use client';
 import AppHeader from '@/ui/AppHeader';
 import PromptInput from '@/components/promptInput';
+import { cn } from '@/lib/utils';
+import { useDarkMode } from '@/lib/useDarkMode';
 
 export default function AppPage() {
-
+  const { isDarkMode } = useDarkMode();
   return (
-    <div className="h-full flex flex-col">
+    <div className={cn(
+      "h-full flex flex-col",
+      isDarkMode ? "bg-darkmode-secondary" : "bg-lightmode-secondary"
+    )}>
       {/* Header */}
       <AppHeader
         userProfile={{

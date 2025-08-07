@@ -29,13 +29,25 @@
   --color-darkmode-tertiary: #212122;
   --color-darkmode-primarytxt: #dadada;
   --color-darkmode-secondarytxt: #7f7f7f;
-  --color-darkmode-primarytxt: #5f5f5f;
+  --color-darkmode-tertiarytxt: #5f5f5f;
   --color-darkmode-darkbtn: #323233;
   --color-darkmode-lightbtn: #ffffff;
   --color-darkmode-blue: #4591f6;
   --color-darkmode-primaryicon: #dadada;
   --color-darkmode-secondaryicon: #acacac;
 
+}
+
+/* Root variables for light mode */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Dark mode variables */
+.dark {
+  --background: #272728;
+  --foreground: #ffffff;
 }
 
 body {

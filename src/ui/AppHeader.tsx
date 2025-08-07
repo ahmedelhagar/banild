@@ -24,7 +24,6 @@ export default function AppHeader({
   userProfile = { name: "John Doe", email: "john@example.com" },
   showUpgrade = true,
   upgradeText = "Upgrade",
-  className
 }: AppHeaderProps) {
   const { isRTL } = useLanguage();
   const { isDarkMode } = useDarkMode();
@@ -32,10 +31,7 @@ export default function AppHeader({
   return (
     <header className={cn(
       "flex items-center justify-between px-6 py-3",
-      isDarkMode
-        ? "bg-darkmode-secondary"
-        : "bg-[--color-lightmode-primary]",
-      className
+      isDarkMode ? "bg-[--color-darkmode-secondary]" : "bg-[--color-lightmode-secondary]"
     )}>
       {/* Logo Section */}
       <div className={cn(

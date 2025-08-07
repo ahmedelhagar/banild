@@ -6,18 +6,14 @@ import {
   Paperclip, 
   Image as ImageIcon, 
   Send, 
-  Mic, 
-  ChevronDown,
   FileText,
-  Video,
-  BarChart3,
-  Globe,
-  Zap,
-  Clock
+  Box,
+  Rocket
 } from 'lucide-react';
 import { useLanguage } from '@/lib/useLanguage';
 import { cn } from '@/lib/utils';
-import { Button, IconButton } from '@/ui/buttons';
+import { IconButton } from '@/ui/buttons';
+import { useDarkMode } from '@/lib/useDarkMode';
 
 interface PromptInputProps {
   className?: string;
@@ -34,9 +30,9 @@ export default function PromptInput({
   const [message, setMessage] = useState('');
   const [files, setFiles] = useState<File[]>([]);
   const [mode, setMode] = useState<'speed' | 'quality'>('speed');
-  const [showSpeedDropdown, setShowSpeedDropdown] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
+  const { isDarkMode } = useDarkMode();
 
   const hasContent = message.trim().length > 0 || files.length > 0;
 
@@ -64,41 +60,6 @@ export default function PromptInput({
     setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
-  const quickActions = [
-    {
-      id: 'image',
-      labelEn: 'Image',
-      labelAr: 'صورة',
-      icon: <ImageIcon className="w-5 h-5" />,
-      onClick: () => imageInputRef.current?.click()
-    },
-    {
-      id: 'slides',
-      labelEn: 'Slides',
-      labelAr: 'عرض تقديمي',
-      icon: <FileText className="w-5 h-5" />
-    },
-    {
-      id: 'webpage',
-      labelEn: 'Webpage',
-      labelAr: 'صفحة ويب',
-      icon: <Globe className="w-5 h-5" />
-    },
-    {
-      id: 'spreadsheet',
-      labelEn: 'Spreadsheet',
-      labelAr: 'جدول بيانات',
-      icon: <BarChart3 className="w-5 h-5" />,
-      badge: 'New'
-    },
-    {
-      id: 'visualization',
-      labelEn: 'Visualization',
-      labelAr: 'تصور بيانات',
-      icon: <Video className="w-5 h-5" />
-    }
-  ];
-
   return (
     <div className={cn(
       "flex flex-col items-center justify-center h-full p-6 max-w-4xl mx-auto",
@@ -106,20 +67,24 @@ export default function PromptInput({
     )}>
       {/* Welcome Message */}
       <div className="text-left w-full mb-8">
-        <h1 className="text-4xl font-bold mb-4 text-[--color-lightmode-primarytxt] dark:text-[--color-darkmode-primarytxt]">
+        <h1 className={cn(
+          "text-4xl font-bold",
+          isDarkMode ? "text-darkmode-primarytxt" : "text-lightmode-primarytxt"
+        )}>
           {isRTL ? "مرحباً إبراهيم إسماعيل" : "Hello ibrahim ismael"}
         </h1>
-        <h1 className="text-4xl text-[--color-lightmode-secondarytxt] dark:text-[--color-darkmode-secondarytxt]">
+        <h1 className={cn(
+          "text-4xl font-bold",
+          isDarkMode ? "text-darkmode-primarytxt" : "text-lightmode-primarytxt"
+        )}>
           {isRTL ? "ماذا يمكنني أن أفعل لك؟" : "What can I do for you?"}
         </h1>
       </div>
 
       {/* Main Input Area */}
       <div className={cn(
-        "w-full max-w-4xl rounded-2xl border-2 transition-all duration-200",
-        "bg-[--color-lightmode-primary] dark:bg-[--color-darkmode-primary]",
-        "border-[--color-lightmode-tertiary] dark:border-[--color-darkmode-tertiary]",
-        hasContent && "border-lightmode-blue dark:border-darkmode-blue"
+        "w-full max-w-4xl rounded-2xl border-1 transition-all duration-200",
+        isDarkMode ? "bg-darkmode-primary border-darkmode-tertiarytxt" : "bg-lightmode-primary border-lightmode-tertiarytxt"
       )}>
         
         {/* File Attachments Display */}
@@ -166,7 +131,7 @@ export default function PromptInput({
           />
 
           {/* Action Buttons Row */}
-          <div className="flex items-center justify-between mt-4 pt-4 border-t border-[--color-lightmode-tertiary] dark:border-[--color-darkmode-tertiary]">
+          <div className="flex items-center justify-between mt-4 pt-4">
             {/* Left Actions */}
             <div className={cn(
               "flex items-center gap-2",
@@ -191,15 +156,7 @@ export default function PromptInput({
                 onClick={() => imageInputRef.current?.click()}
                 className="hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]"
               />
-
-              {/* Voice Input */}
-              <IconButton
-                icon={<Mic />}
-                aria-label={isRTL ? "تسجيل صوتي" : "Voice input"}
-                variant="secondary"
-                size="sm"
-                className="hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]"
-              />
+              
             </div>
 
             {/* Right Actions */}
@@ -207,57 +164,50 @@ export default function PromptInput({
               "flex items-center gap-3",
               isRTL ? "flex-row-reverse" : ""
             )}>
-              {/* Speed/Quality Toggle */}
-              <div className="relative">
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  icon={mode === 'speed' ? <Zap /> : <Clock />}
-                  iconPosition={isRTL ? 'right' : 'left'}
-                  onClick={() => setShowSpeedDropdown(!showSpeedDropdown)}
+              {/* Speed/Quality Switch */}
+              <div className={cn(
+                "inline-flex items-center rounded-full border overflow-hidden p-0.5 transition-colors",
+                isDarkMode ? "border-darkmode-tertiary bg-darkmode-secondary" : "border-lightmode-tertiary bg-lightmode-secondary",
+                isDarkMode ? "" : "shadow-sm"
+              )}>
+                <button
+                  type="button"
+                  onClick={() => setMode('speed')}
+                  aria-pressed={mode === 'speed'}
                   className={cn(
-                    "gap-2 hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]",
-                    isRTL ? "flex-row-reverse" : ""
+                    "flex items-center gap-1 px-3 py-1.5 text-xs transition-colors rounded-full focus-visible:outline-1",
+                    isRTL ? "flex-row-reverse" : "",
+                    mode === 'speed'
+                      ? (isDarkMode
+                          ? "bg-darkmode-primary text-darkmode-primarytxt ring-1 ring-darkmode-tertiary"
+                          : "bg-lightmode-primary text-lightmode-primarytxt ring-1 ring-lightmode-tertiary shadow-sm")
+                      : (isDarkMode
+                          ? "text-darkmode-secondarytxt hover:bg-darkmode-tertiary focus-visible:outline-darkmode-primarytxt"
+                          : "text-lightmode-secondarytxt hover:bg-lightmode-tertiary focus-visible:outline-lightmode-primarytxt")
                   )}
                 >
-                  {mode === 'speed' 
-                    ? (isRTL ? "سريع" : "Speed")
-                    : (isRTL ? "جودة" : "Quality")
-                  }
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-
-                {/* Speed Dropdown */}
-                {showSpeedDropdown && (
-                  <div className="absolute bottom-full mb-2 right-0 bg-white dark:bg-[--color-darkmode-secondary] border border-[--color-lightmode-tertiary] dark:border-[--color-darkmode-tertiary] rounded-lg shadow-lg z-10 min-w-[150px]">
-                    <button
-                      onClick={() => {
-                        setMode('speed');
-                        setShowSpeedDropdown(false);
-                      }}
-                      className={cn(
-                        "w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-[--color-darkmode-tertiary] flex items-center gap-2",
-                        mode === 'speed' && "bg-blue-50 dark:bg-blue-900/20"
-                      )}
-                    >
-                      <Zap className="w-4 h-4" />
-                      {isRTL ? "وضع السرعة" : "Speed Mode"}
-                    </button>
-                    <button
-                      onClick={() => {
-                        setMode('quality');
-                        setShowSpeedDropdown(false);
-                      }}
-                      className={cn(
-                        "w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-[--color-darkmode-tertiary] flex items-center gap-2",
-                        mode === 'quality' && "bg-blue-50 dark:bg-blue-900/20"
-                      )}
-                    >
-                      <Clock className="w-4 h-4" />
-                      {isRTL ? "وضع الجودة" : "Quality Mode"}
-                    </button>
-                  </div>
-                )}
+                  <Box className="w-3.5 h-3.5" />
+                  {isRTL ? "أساسي" : "Basic"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMode('quality')}
+                  aria-pressed={mode === 'quality'}
+                  className={cn(
+                    "flex items-center gap-1 px-3 py-1.5 text-xs transition-colors rounded-full focus-visible:outline-1",
+                    isRTL ? "flex-row-reverse" : "",
+                    mode === 'quality'
+                      ? (isDarkMode
+                          ? "bg-darkmode-primary text-darkmode-primarytxt ring-1 ring-darkmode-tertiary"
+                          : "bg-lightmode-primary text-lightmode-primarytxt ring-1 ring-lightmode-tertiary shadow-sm")
+                      : (isDarkMode
+                          ? "text-darkmode-secondarytxt hover:bg-darkmode-tertiary focus-visible:outline-darkmode-primarytxt"
+                          : "text-lightmode-secondarytxt hover:bg-lightmode-tertiary focus-visible:outline-lightmode-primarytxt")
+                  )}
+                >
+                  <Rocket className="w-3.5 h-3.5" />
+                  {isRTL ? "أداء" : "Performance"}
+                </button>
               </div>
 
               {/* Send Button */}
@@ -278,44 +228,6 @@ export default function PromptInput({
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Quick Actions */}
-      <div className={cn(
-        "flex flex-wrap items-center justify-center gap-4 mt-6 max-w-4xl",
-        isRTL ? "flex-row-reverse" : ""
-      )}>
-        {quickActions.map((action) => (
-          <Button
-            key={action.id}
-            variant="secondary"
-            size="sm"
-            icon={action.icon}
-            iconPosition={isRTL ? 'right' : 'left'}
-            onClick={action.onClick}
-            className={cn(
-              "gap-2 relative hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]",
-              isRTL ? "flex-row-reverse" : ""
-            )}
-          >
-            {isRTL ? action.labelAr : action.labelEn}
-            {action.badge && (
-              <span className={cn(
-                "absolute -top-1 -right-1 px-1.5 py-0.5 text-xs font-medium rounded-full",
-                "bg-blue-500 text-white"
-              )}>
-                {action.badge}
-              </span>
-            )}
-          </Button>
-        ))}
-        <Button
-          variant="secondary"
-          size="sm"
-          className="hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]"
-        >
-          {isRTL ? "المزيد" : "More"}
-        </Button>
       </div>
 
       {/* Hidden File Inputs */}
