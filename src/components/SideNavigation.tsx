@@ -40,7 +40,7 @@ interface NavItem {
   icon: React.ReactNode;
   href?: string;
   isAction?: boolean;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary';
   disabled?: boolean;
 }
 
@@ -53,7 +53,7 @@ export default function SideNavigation({
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [activeItem, setActiveItem] = useState('home');
 
-  // Main action buttons (like in Replit)
+  // Main action buttons
   const actionButtons: NavItem[] = [
     {
       id: 'create-app',
@@ -61,7 +61,7 @@ export default function SideNavigation({
       labelAr: 'إنشاء تطبيق',
       icon: <Plus />,
       isAction: true,
-      variant: 'outline',
+      variant: 'secondary',
       href: '/app'
     },
     {
@@ -70,7 +70,7 @@ export default function SideNavigation({
       labelAr: 'استيراد كود أو تصميم',
       icon: <Download />,
       isAction: true,
-      variant: 'outline',
+      variant: 'secondary',
       href: '/app/import'
     }
   ];
@@ -154,13 +154,6 @@ export default function SideNavigation({
       labelAr: 'الإعدادات',
       icon: <Settings />,
       href: '/app/settings'
-    },
-    {
-      id: 'theme-toggle',
-      labelEn: isDarkMode ? 'Light Mode' : 'Dark Mode',
-      labelAr: isDarkMode ? 'الوضع الفاتح' : 'الوضع المظلم',
-      icon: isDarkMode ? <Sun /> : <Moon />,
-      isAction: true
     }
   ];
 
@@ -173,9 +166,6 @@ export default function SideNavigation({
         toggleDarkMode();
         return;
       }
-      
-      // For items with href, the Link component will handle navigation
-      // This function is mainly for actions and state management
     }
   };
 
@@ -194,14 +184,20 @@ export default function SideNavigation({
             <IconButton
               icon={item.icon}
               aria-label={label}
-              variant={isActive ? 'secondary' : 'ghost'}
+              variant={isActive ? 'primary' : 'secondary'}
               size="md"
               onClick={() => handleItemClick(item)}
               disabled={item.disabled}
               className={cn(
                 "w-10 h-10 justify-center flex-shrink-0",
-                "cursor-pointer focus:outline-none",
-                isActive && "bg-opacity-20"
+                "cursor-pointer focus:outline-none transition-all duration-200",
+                isActive 
+                  ? isDarkMode
+                    ? "bg-[--color-darkmode-blue]/20 text-[--color-darkmode-blue]"
+                    : "bg-[--color-lightmode-blue]/20 text-[--color-lightmode-blue]"
+                  : isDarkMode
+                    ? "text-[--color-darkmode-secondarytxt] hover:bg-[--color-darkmode-tertiary] hover:text-[--color-darkmode-primarytxt]"
+                    : "text-[--color-lightmode-secondarytxt] hover:bg-[--color-lightmode-secondary] hover:text-[--color-lightmode-primarytxt]"
               )}
             />
           </Link>
@@ -211,18 +207,24 @@ export default function SideNavigation({
       return (
         <Link key={item.id} href={item.href}>
           <Button
-            variant={isActive ? 'secondary' : 'ghost'}
+            variant={isActive ? 'primary' : 'secondary'}
             size="md"
             icon={item.icon}
             iconPosition={isRTL ? 'right' : 'left'}
             onClick={() => handleItemClick(item)}
             disabled={item.disabled}
             className={cn(
-              "w-full justify-start mt-1 gap-3 px-3 py-2.5 font-medium",
-              "flex items-center min-h-[40px]", // Ensure proper alignment and consistent height
+              "w-full justify-start gap-3 px-3 py-2.5 font-medium",
+              "flex items-center min-h-[40px] transition-all duration-200",
               "cursor-pointer focus:outline-none",
               isRTL ? "text-right flex-row-reverse" : "text-left flex-row",
-              isActive && "bg-gray-700 shadow-sm"
+              isActive 
+                ? isDarkMode
+                  ? "bg-[--color-darkmode-blue]/20 text-[--color-darkmode-blue]"
+                  : "bg-[--color-lightmode-blue]/20 text-[--color-lightmode-blue]"
+                : isDarkMode
+                  ? "text-[--color-darkmode-secondarytxt] hover:bg-[--color-darkmode-tertiary] hover:text-[--color-darkmode-primarytxt]"
+                  : "text-[--color-lightmode-secondarytxt] hover:bg-[--color-lightmode-secondary] hover:text-[--color-lightmode-primarytxt]"
             )}
           >
             <span className="flex-1 truncate">{label}</span>
@@ -238,15 +240,21 @@ export default function SideNavigation({
           key={item.id}
           icon={item.icon}
           aria-label={label}
-          variant={isActive ? 'secondary' : 'ghost'}
+          variant={isActive ? 'primary' : 'secondary'}
           size="md"
           onClick={() => handleItemClick(item)}
           disabled={item.disabled}
-                     className={cn(
-             "w-10 h-10 justify-center mt-1 flex-shrink-0",
-             "cursor-pointer focus:outline-none",
-             isActive && "bg-opacity-20"
-           )}
+          className={cn(
+            "w-10 h-10 justify-center flex-shrink-0",
+            "cursor-pointer focus:outline-none transition-all duration-200",
+            isActive 
+              ? isDarkMode
+                ? "bg-[--color-darkmode-blue]/20 text-[--color-darkmode-blue]"
+                : "bg-[--color-lightmode-blue]/20 text-[--color-lightmode-blue]"
+              : isDarkMode
+                ? "text-[--color-darkmode-secondarytxt] hover:bg-[--color-darkmode-tertiary] hover:text-[--color-darkmode-primarytxt]"
+                : "text-[--color-lightmode-secondarytxt] hover:bg-[--color-lightmode-secondary] hover:text-[--color-lightmode-primarytxt]"
+          )}
         />
       );
     }
@@ -254,19 +262,25 @@ export default function SideNavigation({
     return (
       <Button
         key={item.id}
-        variant={isActive ? 'primary' : 'ghost'}
+        variant={isActive ? 'primary' : 'secondary'}
         size="md"
         icon={item.icon}
         iconPosition={isRTL ? 'right' : 'left'}
         onClick={() => handleItemClick(item)}
         disabled={item.disabled}
-                 className={cn(
-           "w-full justify-start gap-3 px-3 py-2.5 font-medium",
-           "flex items-center min-h-[40px]", // Ensure proper alignment and consistent height
-           "cursor-pointer focus:outline-none",
-           isRTL ? "text-right flex-row-reverse" : "text-left flex-row",
-           isActive && "bg-opacity-20 shadow-sm"
-         )}
+        className={cn(
+          "w-full justify-start gap-3 px-3 py-2.5 font-medium",
+          "flex items-center min-h-[40px] transition-all duration-200",
+          "cursor-pointer focus:outline-none",
+          isRTL ? "text-right flex-row-reverse" : "text-left flex-row",
+          isActive 
+            ? isDarkMode
+              ? "bg-[--color-darkmode-blue]/20 text-[--color-darkmode-blue]"
+              : "bg-[--color-lightmode-blue]/20 text-[--color-lightmode-blue]"
+            : isDarkMode
+              ? "text-[--color-darkmode-secondarytxt] hover:bg-[--color-darkmode-tertiary] hover:text-[--color-darkmode-primarytxt]"
+              : "text-[--color-lightmode-secondarytxt] hover:bg-[--color-lightmode-secondary] hover:text-[--color-lightmode-primarytxt]"
+        )}
       >
         <span className="flex-1 truncate">{label}</span>
       </Button>
@@ -282,17 +296,18 @@ export default function SideNavigation({
         return {
           collapsed: cn(
             "w-10 h-10 mb-2",
-            "bg-black dark:bg-white hover:from-blue-600 hover:to-blue-700",
-            "text-white dark:text-black",
+            isDarkMode
+              ? "bg-[--color-darkmode-lightbtn] text-[--color-darkmode-secondary] hover:bg-[--color-darkmode-lightbtn]/90"
+              : "bg-[--color-lightmode-darkbtn] text-[--color-lightmode-darktxtbtn] hover:bg-[--color-lightmode-darkbtn]/90",
             "shadow-lg hover:shadow-xl transition-all duration-200",
-            "ring-blue-500/20 hover:ring-blue-500/30",
             "cursor-pointer"
           ),
           expanded: cn(
             "justify-start gap-3 px-3 py-1 font-bold mb-2",
             "flex items-center",
-            "bg-black dark:bg-gray-100",
-            "text-white dark:text-black",
+            isDarkMode
+              ? "bg-[--color-darkmode-lightbtn] text-[--color-darkmode-secondary] hover:bg-[--color-darkmode-lightbtn]/90"
+              : "bg-[--color-lightmode-darkbtn] text-[--color-lightmode-darktxtbtn] hover:bg-[--color-lightmode-darkbtn]/90",
             "shadow-lg hover:shadow-xl transition-all duration-200",
             "cursor-pointer",
             isRTL ? "text-right flex-row-reverse" : "text-left flex-row"
@@ -302,17 +317,18 @@ export default function SideNavigation({
         return {
           collapsed: cn(
             "w-10 h-10",
-            "bg-black dark:bg-white hover:from-blue-600 hover:to-blue-700",
-            "text-white dark:text-black",
+            isDarkMode
+              ? "bg-[--color-darkmode-blue] text-[--color-darkmode-primary] hover:bg-[--color-darkmode-blue]/90"
+              : "bg-[--color-lightmode-blue] text-[--color-lightmode-primary] hover:bg-[--color-lightmode-blue]/90",
             "shadow-lg hover:shadow-xl transition-all duration-200",
-            "ring-blue-500/20 hover:ring-blue-500/30",
             "cursor-pointer"
           ),
           expanded: cn(
            "justify-start gap-3 px-3 py-1 font-bold",
             "flex items-center",
-            "bg-red-500 dark:bg-gray-100",
-            "text-white dark:text-black",
+            isDarkMode
+              ? "bg-[--color-darkmode-blue] text-[--color-darkmode-primary] hover:bg-[--color-darkmode-blue]/90"
+              : "bg-[--color-lightmode-blue] text-[--color-lightmode-primary] hover:bg-[--color-lightmode-blue]/90",
             "shadow-lg hover:shadow-xl transition-all duration-200",
             "cursor-pointer",
             isRTL ? "text-right flex-row-reverse" : "text-left flex-row"
@@ -342,7 +358,7 @@ export default function SideNavigation({
             <IconButton
               icon={item.icon}
               aria-label={label}
-              variant={isCustomButton ? 'primary' : (item.variant || 'outline')}
+              variant={isCustomButton ? 'primary' : (item.variant || 'secondary')}
               size="md"
               onClick={() => handleItemClick(item)}
               className={customStyles.collapsed}
@@ -354,7 +370,7 @@ export default function SideNavigation({
       return (
         <Link key={item.id} href={item.href}>
           <Button
-            variant={isCustomButton ? 'primary' : (item.variant || 'outline')}
+            variant={isCustomButton ? 'primary' : (item.variant || 'secondary')}
             size="md"
             icon={item.icon}
             iconPosition={isRTL ? 'right' : 'left'}
@@ -375,7 +391,7 @@ export default function SideNavigation({
           key={item.id}
           icon={item.icon}
           aria-label={label}
-          variant={isCustomButton ? 'primary' : (item.variant || 'outline')}
+          variant={isCustomButton ? 'primary' : (item.variant || 'secondary')}
           size="md"
           onClick={() => handleItemClick(item)}
           className={customStyles.collapsed}
@@ -386,7 +402,7 @@ export default function SideNavigation({
     return (
       <Button
         key={item.id}
-        variant={isCustomButton ? 'primary' : (item.variant || 'outline')}
+        variant={isCustomButton ? 'primary' : (item.variant || 'secondary')}
         size="md"
         icon={item.icon}
         iconPosition={isRTL ? 'right' : 'left'}
@@ -399,20 +415,69 @@ export default function SideNavigation({
     );
   };
 
+  // Mode toggle button component
+  const renderModeToggle = () => {
+    const label = isDarkMode 
+      ? (isRTL ? 'الوضع الفاتح' : 'Light Mode')
+      : (isRTL ? 'الوضع المظلم' : 'Dark Mode');
+    
+    const icon = isDarkMode ? <Sun /> : <Moon />;
+
+    if (isCollapsed) {
+      return (
+        <IconButton
+          icon={icon}
+          aria-label={label}
+          variant="secondary"
+          size="md"
+          onClick={toggleDarkMode}
+          className={cn(
+            "w-10 h-10 justify-center flex-shrink-0",
+            "cursor-pointer focus:outline-none transition-all duration-200",
+            isDarkMode
+              ? "text-[--color-darkmode-secondarytxt] hover:bg-[--color-darkmode-tertiary] hover:text-[--color-darkmode-primarytxt]"
+              : "text-[--color-lightmode-secondarytxt] hover:bg-[--color-lightmode-secondary] hover:text-[--color-lightmode-primarytxt]"
+          )}
+        />
+      );
+    }
+
+    return (
+      <Button
+        variant="secondary"
+        size="md"
+        icon={icon}
+        iconPosition={isRTL ? 'right' : 'left'}
+        onClick={toggleDarkMode}
+        className={cn(
+          "w-full justify-start gap-3 px-3 py-2.5 font-medium",
+          "flex items-center min-h-[40px] transition-all duration-200",
+          "cursor-pointer focus:outline-none",
+          isRTL ? "text-right flex-row-reverse" : "text-left flex-row",
+          isDarkMode
+            ? "text-[--color-darkmode-secondarytxt] hover:bg-[--color-darkmode-tertiary] hover:text-[--color-darkmode-primarytxt]"
+            : "text-[--color-lightmode-secondarytxt] hover:bg-[--color-lightmode-secondary] hover:text-[--color-lightmode-primarytxt]"
+        )}
+      >
+        <span className="flex-1 truncate">{label}</span>
+      </Button>
+    );
+  };
+
   return (
     <nav className={cn(
       "flex flex-col h-screen border-r transition-all duration-300",
       isCollapsed ? "w-16" : "w-72",
       getFontClass(),
       isDarkMode
-        ? "bg-[#0a0a0a] border-[#1f1f1f]"
-        : "bg-white border-gray-200",
+        ? "bg-[--color-darkmode-secondary] border-[--color-darkmode-tertiary]"
+        : "bg-[--color-lightmode-primary] border-[--color-lightmode-tertiary]",
       className
     )}>
       {/* Toggle Button Section */}
       <div className={cn(
         "flex items-center relative",
-        isDarkMode ? "border-[#1f1f1f]" : "border-gray-200",
+        isDarkMode ? "border-[--color-darkmode-tertiary]" : "border-[--color-lightmode-tertiary]",
         isCollapsed ? "justify-center p-2" : "justify-end px-4 py-2"
       )}>
         {/* Toggle Button */}
@@ -420,15 +485,15 @@ export default function SideNavigation({
           <IconButton
             icon={isCollapsed ? <ChevronRight /> : <ChevronLeft />}
             aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
-            variant="ghost"
+            variant="secondary"
             size="sm"
             onClick={onToggleCollapse}
-                                     className={cn(
-              "backdrop-blur-sm shadow-sm",
-              "cursor-pointer focus:outline-none",
+            className={cn(
+              "backdrop-blur-sm shadow-sm rounded-lg",
+              "cursor-pointer focus:outline-none transition-all duration-200",
               isDarkMode
-                ? "bg-[#1a1a1a]/90 hover:bg-[#252525]"
-                : "bg-white/90 hover:bg-gray-50",
+                ? "bg-[--color-darkmode-tertiary]/90 hover:bg-[--color-darkmode-primary] text-[--color-darkmode-secondaryicon] hover:text-[--color-darkmode-primaryicon]"
+                : "bg-[--color-lightmode-secondary]/90 hover:bg-[--color-lightmode-tertiary] text-[--color-lightmode-secondaryicon] hover:text-[--color-lightmode-primaryicon]",
               "w-7 h-7"
             )}
           />
@@ -438,7 +503,7 @@ export default function SideNavigation({
       {/* Action Buttons Section */}
       <div className={cn(
         "border-b",
-        isDarkMode ? "border-[#1f1f1f]" : "border-gray-200",
+        isDarkMode ? "border-[--color-darkmode-tertiary]" : "border-[--color-lightmode-tertiary]",
         isCollapsed ? "p-2 space-y-2" : "p-4 space-y-3"
       )}>
         {actionButtons.map(renderActionButton)}
@@ -455,13 +520,13 @@ export default function SideNavigation({
         {/* Learning & Help Section */}
         <div className={cn(
           "border-t",
-          isDarkMode ? "border-[#1f1f1f]" : "border-gray-200"
+          isDarkMode ? "border-[--color-darkmode-tertiary]" : "border-[--color-lightmode-tertiary]"
         )}>
           {!isCollapsed && (
             <div className="px-4 py-3">
               <h3 className={cn(
                 "text-sm font-semibold uppercase tracking-wider",
-                isDarkMode ? "text-gray-400" : "text-gray-500",
+                isDarkMode ? "text-[--color-darkmode-secondarytxt]" : "text-[--color-lightmode-secondarytxt]",
                 isRTL ? "text-right" : "text-left"
               )}>
                 {isRTL ? "التعلم والمساعدة" : "Learn & Help"}
@@ -479,13 +544,13 @@ export default function SideNavigation({
         {/* Settings Section */}
         <div className={cn(
           "border-t",
-          isDarkMode ? "border-[#1f1f1f]" : "border-gray-200"
+          isDarkMode ? "border-[--color-darkmode-tertiary]" : "border-[--color-lightmode-tertiary]"
         )}>
           {!isCollapsed && (
             <div className="px-4 py-3">
               <h3 className={cn(
                 "text-sm font-semibold uppercase tracking-wider",
-                isDarkMode ? "text-gray-400" : "text-gray-500",
+                isDarkMode ? "text-[--color-darkmode-secondarytxt]" : "text-[--color-lightmode-secondarytxt]",
                 isRTL ? "text-right" : "text-left"
               )}>
                 {isRTL ? "الإعدادات" : "Settings"}
@@ -497,6 +562,9 @@ export default function SideNavigation({
             isCollapsed ? "p-2 space-y-1" : "px-4 pb-4 space-y-1"
           )}>
             {settingsItems.map((item) => renderNavButton(item, isItemActive(item.id)))}
+            
+            {/* Mode Toggle Button */}
+            {renderModeToggle()}
           </div>
         </div>
       </div>
@@ -504,7 +572,7 @@ export default function SideNavigation({
       {/* Bottom Section - Plan Info */}
       <div className={cn(
         "border-t",
-        isDarkMode ? "border-[#1f1f1f]" : "border-gray-200",
+        isDarkMode ? "border-[--color-darkmode-tertiary]" : "border-[--color-lightmode-tertiary]",
         isCollapsed ? "p-2" : "p-4"
       )}>
         {!isCollapsed && (
@@ -512,7 +580,7 @@ export default function SideNavigation({
             <div>
               <h4 className={cn(
                 "text-sm font-semibold mb-2",
-                isDarkMode ? "text-white" : "text-gray-900",
+                isDarkMode ? "text-[--color-darkmode-primarytxt]" : "text-[--color-lightmode-primarytxt]",
                 isRTL ? "text-right" : "text-left"
               )}>
                 {isRTL ? "خطة المبتدئ" : "Your Starter Plan"}
@@ -521,7 +589,7 @@ export default function SideNavigation({
               <div className="space-y-2 text-xs">
                 <div className={cn(
                   "flex items-center gap-2",
-                  isDarkMode ? "text-gray-400" : "text-gray-600",
+                  isDarkMode ? "text-[--color-darkmode-secondarytxt]" : "text-[--color-lightmode-secondarytxt]",
                   isRTL ? "flex-row-reverse" : ""
                 )}>
                   <FolderOpen className="w-4 h-4" />
@@ -531,7 +599,7 @@ export default function SideNavigation({
                 
                 <div className={cn(
                   "flex items-center gap-2",
-                  isDarkMode ? "text-gray-400" : "text-gray-600",
+                  isDarkMode ? "text-[--color-darkmode-secondarytxt]" : "text-[--color-lightmode-secondarytxt]",
                   isRTL ? "flex-row-reverse" : ""
                 )}>
                   <Sparkles className="w-4 h-4" />
@@ -547,7 +615,7 @@ export default function SideNavigation({
                 size="sm"
                 icon={<Sparkles />}
                 fullWidth
-                                 className="gap-2 cursor-pointer focus:outline-none"
+                className="gap-2 cursor-pointer focus:outline-none"
               >
                 {isRTL ? "ترقية إلى Replit Core" : "Upgrade to Replit Core"}
               </Button>
@@ -561,19 +629,19 @@ export default function SideNavigation({
               <IconButton
                 icon={<Gift />}
                 aria-label={isRTL ? "مشاريع مجانية" : "Free Projects"}
-                                 variant="ghost"
-                 size="md"
-                 className="cursor-pointer focus:outline-none"
-               />
-             </Link>
-             <Link href="/upgrade">
-               <IconButton
-                 icon={<Sparkles />}
-                 aria-label={isRTL ? "ترقية" : "Upgrade"}
-                 variant="primary"
-                 size="sm"
-                 className="cursor-pointer focus:outline-none"
-               />
+                variant="secondary"
+                size="md"
+                className="cursor-pointer focus:outline-none"
+              />
+            </Link>
+            <Link href="/upgrade">
+              <IconButton
+                icon={<Sparkles />}
+                aria-label={isRTL ? "ترقية" : "Upgrade"}
+                variant="primary"
+                size="sm"
+                className="cursor-pointer focus:outline-none"
+              />
             </Link>
           </div>
         )}

@@ -12,7 +12,7 @@ export interface IconButtonProps extends Omit<ButtonProps, 'children' | 'icon' |
 }
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ icon, className, size = 'md', variant = 'ghost', ...props }, ref) => {
+  ({ icon, className, size = 'md', variant = 'secondary', ...props }, ref) => {
     const { isDarkMode } = useDarkMode();
 
     const sizeMap = {

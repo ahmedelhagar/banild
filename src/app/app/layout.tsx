@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import SideNavigation from '@/components/SideNavigation';
-import { useDarkMode } from '@/lib/useDarkMode';
 import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 export default function AppLayout({
   children,
@@ -13,7 +11,6 @@ export default function AppLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navCollapsed, setNavCollapsed] = useState(false);
-  const { isDarkMode } = useDarkMode();
 
   // Load nav state from localStorage on mount
   useEffect(() => {
@@ -43,10 +40,7 @@ export default function AppLayout({
   };
 
   return (
-    <div className={cn(
-      "flex h-screen transition-colors duration-200",
-      isDarkMode ? "bg-[#1a1a1a]" : "bg-gray-50"
-    )}>
+    <div className="flex h-screen transition-colors duration-200">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -71,23 +65,12 @@ export default function AppLayout({
       <div className="lg:hidden fixed top-0 left-0 z-40 p-4">
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className={cn(
-            "p-2 rounded-md shadow-sm border transition-colors duration-200",
-            isDarkMode 
-              ? "bg-[#161616] border-[#2a2a2a] hover:bg-[#252525]" 
-              : "bg-white border-gray-200 hover:bg-gray-50"
-          )}
+          className="p-2 rounded-md shadow-sm border duration-200"
         >
           {sidebarOpen ? (
-            <X className={cn(
-              "w-5 h-5",
-              isDarkMode ? "text-gray-400" : "text-gray-600"
-            )} />
+            <X className="w-5 h-5" />
           ) : (
-            <Menu className={cn(
-              "w-5 h-5",
-              isDarkMode ? "text-gray-400" : "text-gray-600"
-            )} />
+            <Menu className="w-5 h-5" />
           )}
         </button>
       </div>
