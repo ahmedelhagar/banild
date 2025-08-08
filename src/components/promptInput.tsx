@@ -75,7 +75,7 @@ export default function PromptInput({
         </h1>
         <h1 className={cn(
           "text-4xl font-bold",
-          isDarkMode ? "text-darkmode-primarytxt" : "text-lightmode-primarytxt"
+          isDarkMode ? "text-darkmode-tertiarytxt" : "text-lightmode-tertiarytxt"
         )}>
           {isRTL ? "ماذا يمكنني أن أفعل لك؟" : "What can I do for you?"}
         </h1>
@@ -122,9 +122,9 @@ export default function PromptInput({
             onKeyPress={handleKeyPress}
             placeholder={placeholder || (isRTL ? "اكتب مهمة أو اسأل عن أي شيء" : "Assign a task or ask anything")}
             className={cn(
-              "w-full resize-none border-none outline-none bg-transparent text-lg placeholder:text-gray-500",
+              "w-full resize-none border-none outline-none bg-transparent text-lg ",
               "min-h-[60px] max-h-[200px]",
-              "",
+              isDarkMode ? "placeholder:text-darkmode-tertiarytxt" : "placeholder:text-lightmode-tertiarytxt",
               isRTL ? "text-right" : "text-left"
             )}
             rows={3}
@@ -144,7 +144,6 @@ export default function PromptInput({
                 variant="secondary"
                 size="sm"
                 onClick={() => fileInputRef.current?.click()}
-                className="hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]"
               />
 
               {/* Image Upload */}
@@ -154,7 +153,6 @@ export default function PromptInput({
                 variant="secondary"
                 size="sm"
                 onClick={() => imageInputRef.current?.click()}
-                className="hover:bg-[--color-lightmode-tertiary] dark:hover:bg-[--color-darkmode-tertiary]"
               />
               
             </div>

@@ -42,16 +42,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
         const variants = {
       primary: cn(
-        "font-semibold ",
-        isDarkMode
-          ? "bg-[--color-darkmode-lightbtn] text-[--color-darkmode-secondary] hover:bg-[--color-darkmode-lightbtn]/90 active:bg-[--color-darkmode-lightbtn]/80"
-          : "bg-[--color-lightmode-darkbtn] text-[--color-lightmode-darktxtbtn] hover:bg-[--color-lightmode-darkbtn]/90 active:bg-[--color-lightmode-darkbtn]/80"
+        "font-medium",
       ),
       secondary: cn(
-        "font-medium shadow-md hover:shadow-lg transition-all duration-200",
-        isDarkMode
-          ? "bg-[--color-darkmode-darkbtn] text-[--color-darkmode-primarytxt] hover:bg-[--color-darkmode-primary] active:bg-[--color-darkmode-primary]/80"
-          : "bg-[--color-lightmode-lightbtn] text-[--color-lightmode-primarytxt] hover:bg-[--color-lightmode-secondary] active:bg-[--color-lightmode-tertiary]"
+        "font-medium",
       )
     };
 

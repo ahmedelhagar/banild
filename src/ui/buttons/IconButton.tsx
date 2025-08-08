@@ -1,7 +1,6 @@
 'use client';
 
 import { forwardRef, ReactNode } from 'react';
-import { useDarkMode } from '@/lib/useDarkMode';
 import { cn } from '@/lib/utils';
 import Button, { ButtonProps } from './Button';
 
@@ -13,7 +12,6 @@ export interface IconButtonProps extends Omit<ButtonProps, 'children' | 'icon' |
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ icon, className, size = 'md', variant = 'secondary', ...props }, ref) => {
-    const { isDarkMode } = useDarkMode();
 
     const sizeMap = {
       sm: 'w-8 h-8',

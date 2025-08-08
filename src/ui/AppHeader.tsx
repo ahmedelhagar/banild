@@ -56,7 +56,12 @@ export default function AppHeader({
               variant="primary"
               size="sm"
               icon={<Crown className="w-4 h-4" />}
-              className="outline-1 rounded-full "
+              className={cn(
+                "outline-1 rounded-full",
+                isDarkMode
+                  ? "bg-darkmode-primary text-darkmode-primarytxt hover:text-lightmode-primarytxt hover:bg-lightmode-secondary outline-darkmode-secondarytxt"
+                  : "bg-lightmode-primary text-lightmode-primarytxt hover:text-darkmode-primarytxt hover:bg-darkmode-secondary outline-lightmode-secondarytxt"
+              )}
             >
               {upgradeText}
             </Button>
