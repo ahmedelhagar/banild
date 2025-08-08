@@ -4,27 +4,52 @@
 @theme {
   --font-family-poppins: Poppins, sans-serif;
   --font-family-cairo: Cairo, sans-serif;
-  --font-family-arabic: Cairo, sans-serif; /* Alias for existing components */
-  --font-family-sans: Poppins, sans-serif; /* Default to Poppins for English */
+  --font-family-arabic: Cairo, sans-serif;
+  --font-family-sans: Poppins, sans-serif;
+  
+
+  /* Light mode variables */
+  --color-lightmode-primary: #ffffff;
+  --color-lightmode-secondary: #f8f8f8;
+  --color-lightmode-tertiary: #ebebeb;
+  --color-lightmode-primarytxt: #34322e;
+  --color-lightmode-secondarytxt: #858481;
+  --color-lightmode-tertiarytxt: #b9b9b7;
+  --color-lightmode-darkbtn: #1a1a19;
+  --color-lightmode-darktxtbtn: #ffffff;
+  --color-lightmode-lightbtn: #f8f8f8;
+  --color-lightmode-blue: #347fea;
+  --color-lightmode-primaryicon: #34322e;
+  --color-lightmode-secondaryicon: #5e5e5b;
+
+
+  /* Dark mode variables */
+  --color-darkmode-primary: #363537;
+  --color-darkmode-secondary: #272728;
+  --color-darkmode-tertiary: #212122;
+  --color-darkmode-primarytxt: #dadada;
+  --color-darkmode-secondarytxt: #7f7f7f;
+  --color-darkmode-tertiarytxt: #5f5f5f;
+  --color-darkmode-darkbtn: #323233;
+  --color-darkmode-lightbtn: #ffffff;
+  --color-darkmode-blue: #4591f6;
+  --color-darkmode-primaryicon: #dadada;
+  --color-darkmode-secondaryicon: #acacac;
+
 }
 
+/* Root variables for light mode */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-/* Dark mode variables - Professional Manus-style */
+/* Dark mode variables */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #e5e5e5;
-  --sidebar-bg: #0f0f0f;
-  --content-bg: #1a1a1a;
-  --border-color: #2a2a2a;
-  --card-bg: #161616;
-  --hover-bg: #252525;
+  --background: #272728;
+  --foreground: #ffffff;
 }
 
-/* Base styles */
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -38,8 +63,10 @@ body {
 /* Hide scrollbar utility */
 .scrollbar-hide {
   /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -52,7 +79,7 @@ body {
   text-align: right;
 }
 
-[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+[dir="rtl"] .space-x-reverse> :not([hidden])~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
 

@@ -1,97 +1,109 @@
 'use client';
 
 import Image from 'next/image';
-import { User } from 'lucide-react';
+import Link from 'next/link';
+import { User, Crown } from 'lucide-react';
 import { useLanguage } from '@/lib/useLanguage';
 import { useDarkMode } from '@/lib/useDarkMode';
 import { cn } from '@/lib/utils';
+import { Button } from '@/ui/buttons';
+import { Logo } from '@/ui/logo';
 
 interface AppHeaderProps {
-  projectName?: string;
-  projectStats?: {
-    sites: number;
-    platforms: number;
-    tasks: number;
-  };
   userProfile?: {
     name: string;
     email: string;
     avatar?: string;
   };
+  showUpgrade?: boolean;
+  upgradeText?: string;
+  className?: string;
 }
 
-export default function AppHeader({ 
-  projectName = "Fashion Store",
-  projectStats = { sites: 2, platforms: 4, tasks: 2 },
-  userProfile = { name: "John Doe", email: "john@example.com" }
+export default function AppHeader({
+  userProfile = { name: "John Doe", email: "john@example.com" },
+  showUpgrade = true,
+  upgradeText = "Upgrade",
 }: AppHeaderProps) {
   const { isRTL } = useLanguage();
   const { isDarkMode } = useDarkMode();
 
   return (
     <header className={cn(
-      "flex items-center justify-between px-6 py-4 border-b",
-      isDarkMode 
-        ? "bg-[#1a1a1a] border-[#2a2a2a]" 
-        : "bg-white border-gray-200"
+      "flex items-center justify-between px-6 py-3",
+      isDarkMode ? "bg-[--color-darkmode-secondary]" : "bg-[--color-lightmode-secondary]"
     )}>
-      {/* Project Info */}
-      <div className={cn(
-        "flex flex-col",
-        {
-          "items-end": isRTL,
-          "items-start": !isRTL
-        }
-      )}>
-        <h1 className={cn(
-          "text-xl font-bold",
-          isDarkMode ? "text-gray-100" : "text-black"
-        )}>
-          {projectName}
-        </h1>
-        <p className={cn(
-          "text-sm",
-          isDarkMode ? "text-gray-500" : "text-gray-500"
-        )}>
-          {projectStats.sites} sites • {projectStats.platforms} ad platforms • {projectStats.tasks} tasks
-        </p>
-      </div>
-
-      {/* User Profile */}
+      {/* Logo Section */}
       <div className={cn(
         "flex items-center",
-        {
-          "flex-row-reverse": isRTL
-        }
+        isRTL ? "flex-row-reverse" : "flex-row"
       )}>
+        <Link href="/app" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Logo showText={true} variant={isDarkMode ? 'dark' : 'light'} />
+        </Link>
+      </div>
+
+
+      {/* Right Section: Upgrade + Profile */}
+      <div className={cn(
+        "flex items-center gap-4",
+        isRTL ? "flex-row-reverse" : "flex-row"
+      )}>
+        {/* Upgrade Button */}
+        {showUpgrade && (
+          <Link href="/pricing">
+            <Button
+              variant="primary"
+              size="sm"
+              icon={<Crown className="w-4 h-4" />}
+              className={cn(
+                "outline-1 rounded-full",
+                isDarkMode
+                  ? "bg-darkmode-primary text-darkmode-primarytxt hover:text-lightmode-primarytxt hover:bg-lightmode-secondary outline-darkmode-secondarytxt"
+                  : "bg-lightmode-primary text-lightmode-primarytxt hover:text-darkmode-primarytxt hover:bg-darkmode-secondary outline-lightmode-secondarytxt"
+              )}
+            >
+              {upgradeText}
+            </Button>
+          </Link>
+        )}
+
+        {/* Profile Section */}
         <div className="relative">
           {userProfile.avatar ? (
             <Image
               src={userProfile.avatar}
               alt={userProfile.name}
-              width={32}
-              height={32}
+              width={36}
+              height={36}
               className={cn(
-                "rounded-full border",
-                isDarkMode ? "border-[#2a2a2a]" : "border-gray-200"
+                "rounded-full border-2 cursor-pointer hover:opacity-80 transition-opacity object-cover",
+                isDarkMode
+                  ? "border-[--color-darkmode-tertiary]"
+                  : "border-[--color-lightmode-tertiary]"
               )}
+              onError={(e) => {
+                // Hide the image and show fallback if loading fails
+                e.currentTarget.style.display = 'none';
+                const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = 'flex';
+              }}
             />
-          ) : (
-            <div className={cn(
-              "w-8 h-8 rounded-full flex items-center justify-center",
-              isDarkMode ? "bg-white" : "bg-black"
-            )}>
-              <User className={cn(
-                "w-4 h-4",
-                isDarkMode ? "text-black" : "text-white"
-              )} />
-            </div>
-          )}
-          {/* Online status indicator */}
-          <div className={cn(
-            "absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white",
-            isDarkMode ? "bg-white" : "bg-black"
-          )}></div>
+          ) : null}
+
+          {/* Fallback Avatar - Always present but hidden when image loads successfully */}
+          <div
+            className={cn(
+              "w-9 h-9 rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity border-2",
+              isDarkMode
+                ? "bg-[--color-darkmode-darkbtn] text-[--color-darkmode-primarytxt] border-[--color-darkmode-tertiary]"
+                : "bg-[--color-lightmode-lightbtn] text-[--color-lightmode-primarytxt] border-[--color-lightmode-tertiary]",
+              userProfile.avatar ? "hidden" : "flex"
+            )}
+            style={{ display: userProfile.avatar ? 'none' : 'flex' }}
+          >
+            <User className="w-5 h-5" />
+          </div>
         </div>
       </div>
     </header>

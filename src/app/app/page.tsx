@@ -1,22 +1,39 @@
-
 'use client';
-
 import AppHeader from '@/ui/AppHeader';
-import DashboardContent from '@/ui/DashboardContent';
+import PromptInput from '@/components/promptInput';
+import { cn } from '@/lib/utils';
+import { useDarkMode } from '@/lib/useDarkMode';
 
 export default function AppPage() {
+  const { isDarkMode } = useDarkMode();
   return (
-    <div className="h-full flex flex-col">
+    <div className={cn(
+      "h-full flex flex-col",
+      isDarkMode ? "bg-darkmode-secondary" : "bg-lightmode-secondary"
+    )}>
       {/* Header */}
-      <AppHeader 
-        projectName="Fashion Store"
-        projectStats={{ sites: 2, platforms: 4, tasks: 2 }}
-        userProfile={{ name: "John Doe", email: "john@example.com" }}
+      <AppHeader
+        userProfile={{
+          name: "Ibrahim Ismael",
+          email: "ibrahim@example.com",
+          avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format"
+          // avatar: "/path/to/avatar.jpg" // Optional: add avatar path
+        }}
+        showUpgrade={true}
+        upgradeText="Upgrade"
       />
-      
+
       {/* Main Content */}
       <div className="flex-1 overflow-auto">
-        <DashboardContent />
+        <PromptInput
+          onSubmit={(message, files, mode) => {
+            console.log('Message:', message);
+            console.log('Files:', files);
+            console.log('Mode:', mode);
+            // Here you can handle the submission
+          }}
+          placeholder="Ask me anything or assign a task..."
+        />
       </div>
     </div>
   );

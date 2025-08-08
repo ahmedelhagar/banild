@@ -24,9 +24,6 @@ export default function ButtonExamples() {
           <div className="flex flex-wrap gap-3">
             <Button variant="primary">Primary Button</Button>
             <Button variant="secondary">Secondary Button</Button>
-            <Button variant="outline">Outline Button</Button>
-            <Button variant="ghost">Ghost Button</Button>
-            <Button variant="destructive">Destructive Button</Button>
           </div>
         </section>
 
@@ -47,8 +44,8 @@ export default function ButtonExamples() {
           <div className="flex flex-wrap gap-3">
             <Button icon={<Plus />}>Create New</Button>
             <Button icon={<Download />} iconPosition="right">Download</Button>
-            <Button variant="outline" icon={<Heart />}>Like</Button>
-            <Button variant="ghost" icon={<Settings />} iconPosition="right">Settings</Button>
+            <Button variant="secondary" icon={<Heart />}>Like</Button>
+            <Button variant="secondary" icon={<Settings />} iconPosition="right">Settings</Button>
           </div>
         </section>
 
@@ -58,7 +55,7 @@ export default function ButtonExamples() {
           <div className="flex flex-wrap gap-3">
             <Button loading>Loading...</Button>
             <LoadingButton loading loadingText="Saving...">Save</LoadingButton>
-            <LoadingButton loading variant="outline">Processing</LoadingButton>
+            <LoadingButton loading variant="secondary">Processing</LoadingButton>
           </div>
         </section>
 
@@ -67,9 +64,9 @@ export default function ButtonExamples() {
           <h3 className="text-lg font-semibold">Icon Buttons</h3>
           <div className="flex gap-3">
             <IconButton icon={<Plus />} aria-label="Add item" />
-            <IconButton icon={<Heart />} variant="outline" aria-label="Like" />
-            <IconButton icon={<Settings />} variant="ghost" aria-label="Settings" />
-            <IconButton icon={<Trash2 />} variant="destructive" aria-label="Delete" />
+            <IconButton icon={<Heart />} variant="secondary" aria-label="Like" />
+            <IconButton icon={<Settings />} variant="secondary" aria-label="Settings" />
+            <IconButton icon={<Trash2 />} variant="primary" aria-label="Delete" />
           </div>
         </section>
 
@@ -81,9 +78,9 @@ export default function ButtonExamples() {
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Horizontal Group (Attached)</p>
               <ButtonGroup>
-                <Button variant="outline">Left</Button>
-                <Button variant="outline">Center</Button>
-                <Button variant="outline">Right</Button>
+                <Button variant="secondary">Left</Button>
+                <Button variant="secondary">Center</Button>
+                <Button variant="secondary">Right</Button>
               </ButtonGroup>
             </div>
             
@@ -91,17 +88,17 @@ export default function ButtonExamples() {
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Horizontal Group (Separated)</p>
               <ButtonGroup attached={false}>
                 <Button>Button 1</Button>
-                <Button variant="outline">Button 2</Button>
-                <Button variant="ghost">Button 3</Button>
+                <Button variant="secondary">Button 2</Button>
+                <Button variant="secondary">Button 3</Button>
               </ButtonGroup>
             </div>
 
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Vertical Group</p>
               <ButtonGroup orientation="vertical">
-                <Button variant="outline">Top</Button>
-                <Button variant="outline">Middle</Button>
-                <Button variant="outline">Bottom</Button>
+                <Button variant="secondary">Top</Button>
+                <Button variant="secondary">Middle</Button>
+                <Button variant="secondary">Bottom</Button>
               </ButtonGroup>
             </div>
           </div>
@@ -113,12 +110,23 @@ export default function ButtonExamples() {
           <Button fullWidth icon={<Check />}>Full Width Button</Button>
         </section>
 
+        {/* Custom Styling with className */}
+        <section className="space-y-4">
+          <h3 className="text-lg font-semibold">Custom Styling Examples</h3>
+          <div className="flex flex-wrap gap-3">
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white">Custom Blue</Button>
+            <Button variant="secondary" className="border-2 border-green-500 text-green-500">Custom Border</Button>
+            <Button className="rounded-full px-8">Rounded Full</Button>
+            <Button variant="secondary" className="shadow-2xl transform hover:scale-105">Custom Shadow</Button>
+          </div>
+        </section>
+
         {/* Disabled States */}
         <section className="space-y-4">
           <h3 className="text-lg font-semibold">Disabled States</h3>
           <div className="flex flex-wrap gap-3">
             <Button disabled>Disabled Primary</Button>
-            <Button variant="outline" disabled>Disabled Outline</Button>
+            <Button variant="secondary" disabled>Disabled Secondary</Button>
             <IconButton icon={<Settings />} disabled aria-label="Disabled settings" />
           </div>
         </section>
