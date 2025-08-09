@@ -3,7 +3,6 @@
 import { forwardRef, ButtonHTMLAttributes, ReactNode } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useLanguage } from '@/lib/useLanguage';
-import { useDarkMode } from '@/lib/useDarkMode';
 import { cn } from '@/lib/utils';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,7 +29,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ...props
   }, ref) => {
     const { isRTL } = useLanguage();
-    const { isDarkMode } = useDarkMode();
 
     const baseStyles = cn(
       "inline-flex items-center justify-center font-medium transition-all duration-200",
