@@ -1,10 +1,33 @@
 # Banild Ai
 
 
+## Page Routing
 
+Routes tree
 
+```text
 
-
+|- intro (/intro)
+|- pricing (/pricing)
+|- templates (/templates)
+|
+|- app (/app)
+|
+|
+|- auth (/auth)
+|  |- sign (/auth/sign)
+|  |- login (/auth/login)
+|  |- otp (/auth/otp)
+|  `- reset-password (/auth/reset-password)
+|
+|
+`- blog (/blog)
+|   `- [id] (/blog/[id])
+|
+|
+|
+|
+```
 
 ### Color Vars
 ```css
@@ -37,3 +60,6 @@
   --color-darkmode-secondaryicon: #acacac;
 
 ```
+
+### Notes : 
+1. when add dark styles use isDark? --- : --- (Not dark:---)
