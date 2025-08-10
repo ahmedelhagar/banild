@@ -279,7 +279,7 @@ export default function SideNavigation({
                   isDarkMode ? "bg-darkmode-primarytxt text-darkmode-primary hover:bg-darkmode-secondarytxt" : "bg-black text-lightmode-primary hover:bg-lightmode-primarytxt"
                 )}
               >
-                {isRTL ? "ترقية إلى Replit Core" : "Upgrade to Replit Core"}
+                {isRTL ? "ترقية إلى Banild Pro" : "Upgrade to Banild Pro"}
               </Button>
             </Link>
           </div>
